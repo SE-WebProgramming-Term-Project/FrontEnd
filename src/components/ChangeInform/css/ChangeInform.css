@@ -1,0 +1,123 @@
+
+.changeHedder{
+    width: 1200px;
+    font-weight: 400;
+    height: 22px;
+    padding: 60px 0 27px 0;
+    font-size: 22px;
+    border-bottom: 1px solid #999;
+    color: #222;
+    margin: auto;
+    font-family: Noto Sans CJK KR Bold;
+}
+.myInform{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.inputbox{
+    margin-bottom: 20px;
+    width: 660px;
+    height: 50px;
+    border-bottom: 1px solid #ddd;
+    padding: 15px 10px;
+}
+.nameinput{
+    width: 660px;
+    height: 50px;
+}
+.idinput{
+    width: 660px;
+    height: 50px;
+}
+.pwinput{
+    width: 660px;
+    height: 50px;
+}
+.repwinput{
+    width: 660px;
+    height: 50px;
+}
+.leftnum{
+    width: 178px;
+    height: 50px;
+    padding: 0 10px;
+}
+.rightnum{
+    width: 238px;
+    height: 19px;
+    margin-left: 10px;
+    padding: 15px 80px 15px 10px;
+}
+.phonbtn{
+    display: inline-block;
+    width: 128px;
+    height: 38px;
+    margin-left: 10px;
+    line-height: 38px;
+    text-align: center;
+    cursor: pointer;
+    background-color: #ccc;
+    color: #fff;
+}
+.birthinput{
+    width: 660px;
+    height: 50px;
+    margin-bottom: 20px;
+}
+.emailInput{
+    display: flex;
+    justify-content: space-between;
+}
+.leftemail{
+    width: 290px;
+    height: 38px;
+}
+.rightemail{
+    width: 332px;
+    height: 38px;
+}
+.address{
+    width: 500px;
+    height: 38px;
+}
+.searchaddress{
+    display: inline-block;
+    width: 112px;
+    background-color: #ccc;
+    color: #fff;
+    height: 38px;
+    margin-left: 10px;
+    text-align: center;
+    line-height: 38px;
+}
+.streetaddress{
+    width: 100%;
+    height: 50px;
+}
+.subBtn{
+    width: 660px;
+    display: flex;
+    justify-content: space-between;
+}
+.cancelbtn{
+    width: 325px;
+    height: 64px;
+    margin-right: 4px;
+    color: #fff;
+    background-color: #ccc;
+    line-height: 64px;
+    text-align: center;
+    display: inline-block;
+    font-size: 22px;
+}
+.okbtn{
+    width: 325px;
+    height: 64px;
+    color: #fff;
+    background-color: #41b6e6;
+    line-height: 64px;
+    text-align: center;
+    display: inline-block;
+    cursor: pointer;
+}

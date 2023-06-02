@@ -1,0 +1,30 @@
+*{
+  background-color: white;
+}.menu-pagination-nav {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   gap: 4px;
+   margin: 16px;
+ }
+
+.menu-pagination-button {
+  border: none;
+  border-radius: 8px;
+  padding: 8px;
+  margin: 0;
+  color: #999999;
+  font-size: 1rem;
+}
+
+.menu-pagination-button-active {
+  color: #41b6e6;
+  font-weight: bold;
+  cursor: revert;
+  transform: revert;
+}
+
+.menu-pagination-button-disabled {
+  cursor: no-drop;
+  transform: revert;
+}

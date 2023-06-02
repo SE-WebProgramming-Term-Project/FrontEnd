@@ -1,0 +1,16 @@
+.reviewcontainer{
+    display: flex;
+    justify-content: center;
+}
+.star{
+    margin: 0 10px;
+    width: 50px;
+    height: 20px;
+}
+.reviewText{
+    margin: 0 10px;
+    height: 20px;
+}
+.submitbtn{
+    margin: 0 10px;
+}

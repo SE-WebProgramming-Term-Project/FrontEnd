@@ -1,0 +1,15 @@
+.pc-pizzamenu-top-text{
+    width: 1200px;
+    height: 200px;
+    border-bottom: 1px solid  #ccc;
+}
+.pizzamenu-top-text-body2{
+    text-align: center;
+    color: #222222;
+    font-size: 42px;
+}
+.pizzamenu-top-text-footer{
+    text-align: center;
+    color: #222222;
+    font-size: 18px;
+}

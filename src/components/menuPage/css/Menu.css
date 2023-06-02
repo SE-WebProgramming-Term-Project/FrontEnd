@@ -1,0 +1,197 @@
+*{
+  font-family: Noto Sans CJK KR Bold;
+  box-sizing: border-box;
+}
+
+.Layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.container{
+  position: relative;
+  width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+}
+
+.kategorie_bar{
+  width: 1200px;
+  height: 70px;
+  color: #ccc;
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin-bottom: 150px;
+  margin-top: 15px;
+}
+
+
+.kategorie_bar tr {
+  text-align: center;
+
+  line-height: 68px;
+
+}
+.kategorie_bar tr td{
+  width: 20%;
+  height: 70px;
+  border: 1px solid  #ccc;
+  cursor: pointer;
+}
+.kategorie_bar td.selected {
+  background-color: #41b6E6;
+  color: #fff;
+}
+label{
+  display: block;
+  position:absolute;
+  right: 0;
+  top: 100px;
+  margin: 0;
+
+}
+label select{
+  display: block;
+
+  border: 1px solid #ccc;
+  width: 300px;
+  height: 70px;
+  border-radius: 0;
+  margin: 30px 0 30px 0;
+  line-height: 35px;
+
+
+  background-size: 11px 7px;
+  background-position-x: calc(100% - 15px);
+}
+
+.pizzaMenu {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  width: 590px;
+  max-height: 240px;
+}
+
+.pizzaMenu .explane{
+  margin-top: 50px;
+  min-width: 270px;
+  font-size: 30px;
+  margin-top: -30px;
+
+}
+.pizzaMenu .explane h3{
+  margin-bottom: -30px;
+
+}
+.pizzaMenu .explane h6{
+  color: grey;
+  font-size: 18px;
+
+}
+.pizzaMenu .explane .price{
+  display: flex;
+  font-size: 30px;
+  margin-top: -30px;
+}
+.price h5:nth-child(2) {
+  margin-right: 20px; /* 원하는 만큼의 간격 설정 */
+
+}
+
+.pizzaMenu .explane .price .large{
+  color :#41b6E6;
+
+  font-weight: bold;
+}
+.pizzaMenu .explane .price .cost{
+  font-weight: bold;
+  margin-left: 10px;
+}
+.pizzaMenu .explane .metarials{
+  display: flex;
+  justify-content: space-between;
+
+}
+.pizzaMenu .explane .metarial{
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  min-height: 40px;
+  min-width: 80px;
+  margin-top: -30px;
+  font-size: 18px;
+  font-weight: normal;
+  text-align: center;
+  line-height: 40px;
+}
+.pizzaMenu .img{
+  max-width: 276px;
+  display: inline-block;
+
+}
+.pizzaMenu:hover .link{
+  display: flex;
+}
+.link{
+  display: none;
+  position: absolute;
+  top: 0;
+  width: 590px;
+  height: 240px;
+  background-color: rgba(0, 0, 0, 0.8);
+  align-items: center;
+  justify-content: center;
+}
+.link img{
+  width: 20px;
+  height: 20px;
+  margin: 16px 0px 16px;
+  background-color: transparent;
+
+}
+.link .info{
+  justify-content: center;
+
+  display: flex;
+  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0);
+  line-height: 52px;
+  border: 1px solid #41b6E6;
+  color:#41b6E6;
+  height: 50px;
+  width: 100px;
+  border-radius: 15px;
+
+}
+.info:hover {
+  background-color: #41b6E6;
+  color: white;
+}
+.link .cart{
+  justify-content: center;
+
+  display: flex;
+  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0);
+  line-height: 52px;
+  border: 1px solid #41b6E6;
+  color:#41b6E6;
+  height: 50px;
+  width: 100px;
+  border-radius: 15px;
+}
+.cart:hover{
+  background-color: #41b6E6;
+  color: white;
+}
+.link .goto{
+  display: flex;
+  width: 250px;
+  justify-content: space-between;
+  background-color: transparent;
+}
