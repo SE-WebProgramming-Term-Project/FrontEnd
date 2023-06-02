@@ -27,6 +27,7 @@ function Posts() {
   };
 
   const handleCartClick = (pizza) => {
+    alert("장바구니에 추가 하였습니다.");
     setCartItems((prevItems) => [...prevItems, pizza]);
     console.log(setCartItems);
   };

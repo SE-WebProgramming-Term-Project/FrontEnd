@@ -1,0 +1,49 @@
+*{
+    margin: 0 auto;
+}
+main{
+    margin: 0 auto;
+    max-width: 1200px;
+}
+.pc-pizzamenu-top-text{
+    width: 1200px;
+    height: 200px;
+    border-bottom: 1px solid  #ccc;
+    line-height: 200px;
+}
+.order-basket-list-header {
+    max-width: 1200px;
+    height: 64px;
+    width: 100%;
+    line-height: 64px;
+    border-top: 1px solid #999;
+    border-bottom: 1px solid #999;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    font-family: Noto Sans CJK KR Medium;
+    font-size: 16px;
+    color: #666;
+    text-align: center;
+}
+.order-basket-list-menu{
+    min-width: 700px;
+}
+.order-basket-list-count{
+    min-width: 140px;
+    margin: 0 -11px 0 -11px;
+}
+.order-basket-list-price{
+    min-width: 180px;
+    margin: 0 -11px 0 -11px;
+}
+.order-basket-list-change{
+
+}
+.order-basket-list-change{
+
+}
