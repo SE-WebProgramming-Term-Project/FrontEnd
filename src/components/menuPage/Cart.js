@@ -130,8 +130,17 @@ function Cart() {
                         </ul>
 
                     )
-                    : (
+                    : (<div>
                         <p>장바구니가 비어있습니다.</p>
+                        <div className="button-layout">
+                            <Link to="/" state={locationState} className="menu-add-button">
+                                메뉴추가
+                            </Link>
+                        </div>
+                    </div>
+
+
+
                     )}
 
             </main>
