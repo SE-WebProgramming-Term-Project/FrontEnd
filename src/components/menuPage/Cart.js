@@ -1,12 +1,17 @@
-import React, { useState }  from "react";
-import { useLocation } from "react-router-dom";
-import './css/Cart.css'
+import React, { useState, useEffect } from "react";
+import { useLocation, useNavigate, Link } from "react-router-dom";
+import "./css/Cart.css";
+import * as PropTypes from "prop-types";
+
+
+
 function Cart() {
     const location = useLocation();
-    const cartItems = location.state;
+    const cartItems = location.state && location.state.cartItems ? location.state.cartItems : [];
 
     const [counts, setCounts] = useState(cartItems.map(() => 1));
-    const [locationState, setLocationState] = useState('');
+    const [locationState, setLocationState] = useState(cartItems);
+
     const handleDecrement = (index) => {
         if (counts[index] > 1) {
             const newCounts = [...counts];
@@ -22,26 +27,38 @@ function Cart() {
     };
 
     const handleRemove = (index) => {
-        const newCartItems = [...cartItems];
+        const newCartItems = [...locationState];
         newCartItems.splice(index, 1);
-        const newCounts = [...counts];
-        newCounts.splice(index, 1);
-        setCounts(newCounts);
         setLocationState(newCartItems);
+        setCounts((prevCounts) => {
+            const newCounts = [...prevCounts];
+            newCounts.splice(index, 1);
+            return newCounts;
+        });
     };
 
     const calculateTotalPrice = () => {
         let totalPrice = 0;
-        for (let i = 0; i < cartItems.length; i++) {
-            const pizza = cartItems[i];
+        for (let i = 0; i < locationState.length; i++) {
             const count = counts[i];
-            totalPrice += (pizza.large * count) || 0; // NaN 값을 방지하기 위해 0으로 대체
-            console.log(totalPrice);
+            totalPrice += (locationState[i].large || 0) * count;
         }
-        console.log('cartItems:', cartItems);
-        console.log('counts:', counts);
         return totalPrice;
     };
+
+    useEffect(() => {
+        console.log("Counts have changed:", counts);
+        const updatedPizzaInfo = counts.map((count, index) => {
+            const pizza = locationState[index];
+            return {
+                ...pizza,
+                count,
+            };
+        });
+        console.log("Updated pizza information:", updatedPizzaInfo);
+    }, [counts, locationState]);
+
+
 
     return (
 
@@ -60,18 +77,16 @@ function Cart() {
 
             </header>
             <main>
-                {cartItems.length > 0 ? (
-                    <ul>
-                        <div className="baskit">
-
-                        {cartItems.map((pizza, index) => (
-                            <li className="pizzaBox" key={index}>
-                                <img className="pizza_img" src={pizza.img} alt="피자 이미지" />
-                                <div className="pizzaInfo">
-                                    <h3>{pizza.title}</h3>
-                                    <p> L</p>
-
-                                </div>
+                {locationState.length > 0 ? (
+                        <ul>
+                            <div className="baskit">
+                                {locationState.map((pizza, index) => (
+                                    <li className="pizzaBox" key={index}>
+                                        <img className="pizza_img" src={pizza.img} alt="피자 이미지" />
+                                        <div className="pizzaInfo">
+                                            <h3>{pizza.title}</h3>
+                                            <p> L</p>
+                                        </div>
                                 <img
                                     src="data:image/svg+xml;base64,PHN2ZyBpZD0iXy0iIGRhdGEtbmFtZT0iLSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCI+CiAgPGRlZnM+CiAgICA8c3R5bGU+CiAgICAgIC5jbHMtMSB7CiAgICAgICAgZmlsbDogI2NjYzsKICAgICAgfQoKICAgICAgLmNscy0yIHsKICAgICAgICBmaWxsOiAjZmZmOwogICAgICB9CiAgICA8L3N0eWxlPgogIDwvZGVmcz4KICA8Y2lyY2xlIGNsYXNzPSJjbHMtMSIgY3g9IjMwIiBjeT0iMzAiIHI9IjMwIi8+CiAgPHJlY3QgY2xhc3M9ImNscy0yIiB4PSIxOCIgeT0iMjkiIHdpZHRoPSIyNSIgaGVpZ2h0PSIzIi8+Cjwvc3ZnPgo="
                                     alt="plus button" className="cursor_disable_minus"
@@ -94,15 +109,29 @@ function Cart() {
                             </li>
                         ))}
                         </div>
+
+                        <div className="bottom-fixed">
+                            <div className="total-layout">
+                                <h4 className="sum-total">합계</h4>
+                                <h4 className="total">총
+                                <span>{calculateTotalPrice()}</span>
+                                    원
+                            </h4></div>
+
+                        </div>
+                        <div className="button-layout">
+                            <Link to="/" state={locationState} className="menu-add-button">
+                                메뉴추가
+                            </Link>
+                            <div className="basic-button">주문하기</div>
+                        </div>
                     </ul>
-                ) : (
+
+                )
+                    : (
                     <p>장바구니가 비어있습니다.</p>
                 )}
-                <div className="totalPrice">
-                    <p>
-                        Total Price: <span>{calculateTotalPrice()}</span>
-                    </p>
-                </div>
+
             </main>
             <footer>
 

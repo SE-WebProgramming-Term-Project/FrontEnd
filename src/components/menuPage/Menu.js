@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Pagination from "./MenuPazination";
 import Menu_header from "./Menu_header";
 import './css/Menu.css'
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation  } from "react-router-dom";
 import axios from "axios";
 
 function Posts() {
@@ -16,6 +16,8 @@ function Posts() {
   const offset = (page - 1) * limit;
   const navigate = useNavigate();
   const [cartItems, setCartItems] = useState([]);
+  const location = useLocation(); // useLocation 추가
+
   const handleDetailClick = (event) => {
     if (event.target.className === 'info') { // Assuming 'info' is the class name of the element that should trigger the detail click
       navigate("/Detail");
@@ -23,13 +25,12 @@ function Posts() {
   };
 
   const handleGoToCart = () => {
-    navigate("/cart",{ state: cartItems });
+    navigate("/cart",{ state: { cartItems: [...cartItems] } });
   };
 
   const handleCartClick = (pizza) => {
     alert("장바구니에 추가 하였습니다.");
     setCartItems((prevItems) => [...prevItems, pizza]);
-    console.log(setCartItems);
   };
   useEffect(() => {
     axios.get("/json/data.json").then((response) => {
@@ -75,6 +76,16 @@ function Posts() {
     setPage(1);
   }, [selectedCategory]);
 
+  useEffect(() => {
+    const state = location.state;
+    console.log(state);
+
+
+      setCartItems(state);
+
+    console.log(cartItems);
+
+  }, [location.state]);
   const handleCategoryClick = (category) => {
     setSelectedCategory(category);
     setPosts(originalPosts);
@@ -209,6 +220,6 @@ function Posts() {
         </footer>
       </div>
   );
-}
 
+}
 export default Posts;
