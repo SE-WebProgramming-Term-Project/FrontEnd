@@ -18,10 +18,8 @@ function Posts() {
   const [cartItems, setCartItems] = useState([]);
   const location = useLocation(); // useLocation 추가
 
-  const handleDetailClick = (event) => {
-    if (event.target.className === 'info') { // Assuming 'info' is the class name of the element that should trigger the detail click
-      navigate("/Detail");
-    }
+  const handleDetailClick = (pizzaInfo) => {
+    navigate("/detail", { state: { pizzaInfo } });
   };
 
   const handleGoToCart = () => {
@@ -29,9 +27,12 @@ function Posts() {
   };
 
   const handleCartClick = (pizza) => {
-    alert("장바구니에 추가 하였습니다.");
-    setCartItems((prevItems) => [...prevItems, pizza]);
+    alert("장바구니에 추가하였습니다.");
+    const updatedCartItems = Array.isArray(cartItems) ? [...cartItems, pizza] : [pizza];
+    setCartItems(updatedCartItems);
+    location.state = updatedCartItems; // Update location.state with new cart items
   };
+
   useEffect(() => {
     axios.get("/json/data.json").then((response) => {
       setPosts(response.data);
@@ -117,12 +118,12 @@ function Posts() {
 
   return (
       <div className="Layout">
-        <header>
+        <header id="menu_header">
           <Menu_header></Menu_header>
         </header>
 
         <main>
-          <div className="container">
+          <div className="container" id="menu_container">
             <table className="kategorie_bar">
               <tbody>
               <tr>
@@ -195,12 +196,16 @@ function Posts() {
                         </div>
                       </div>
                       <div className="link">
-                        <div className="goto" onClick={handleDetailClick}>
-                          <div className="info">
-                            <img src="img/돋보기.png" alt="상세보기"></img>상세보기
+                        <div className="goto" >
+
+                          <div className="info" onClick={() => handleDetailClick({ id, img, title, tag, large, update, category, reguler, metarial })}>
+                            <img src="img/돋보기.png"
+                              alt="상세보기"></img>상세보기
                           </div>
+
                           <div className="cart" onClick={() => handleCartClick({ id, img, title, tag, large, update, category, reguler, metarial })}>
-                            <img src="img/장바구니.png" alt="장바구니"></img>장바구니
+                            <img src="img/장바구니.png"
+                                 alt="장바구니"></img>장바구니
                           </div>
                         </div>
                       </div>
@@ -208,7 +213,7 @@ function Posts() {
                 ))}
           </div>
         </main>
-        <footer>
+        <footer id="menu_footer">
           <Pagination
               total={totalPosts}
               limit={limit}

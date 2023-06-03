@@ -8,15 +8,13 @@ main{
 main ul{
     padding-left: 0px;
 }
-.pc-pizzamenu-top-text{
+.pc-pizzamenu-top-text1{
     width: 1200px;
     height: 200px;
     border-bottom: 1px solid  #ccc;
     line-height: 200px;
 }
-.pizzaBox.hidden {
-    display: none;
-}
+
 .order-basket-list-header {
     max-width: 1200px;
     height: 64px;
