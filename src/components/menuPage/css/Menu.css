@@ -9,10 +9,21 @@
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
-}
-.container{
   position: relative;
+}
+
+
+
+#menu_footer{
+  position: absolute;
+  top: 700px;
+}
+#menu_container{
+
+  position: absolute;
   width: 1200px;
+  left: 0;
+
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;

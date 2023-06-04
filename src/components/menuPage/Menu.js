@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Pagination from "./MenuPazination";
 import Menu_header from "./Menu_header";
 import './css/Menu.css'
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation  } from "react-router-dom";
 import axios from "axios";
 
 function Posts() {
@@ -16,20 +16,23 @@ function Posts() {
   const offset = (page - 1) * limit;
   const navigate = useNavigate();
   const [cartItems, setCartItems] = useState([]);
-  const handleDetailClick = (event) => {
-    if (event.target.className === 'info') { // Assuming 'info' is the class name of the element that should trigger the detail click
-      navigate("/Detail");
-    }
+  const location = useLocation(); // useLocation 추가
+
+  const handleDetailClick = (pizzaInfo) => {
+    navigate("/detail", { state: { pizzaInfo } });
   };
 
   const handleGoToCart = () => {
-    navigate("/cart",{ state: cartItems });
+    navigate("/cart",{ state: { cartItems: [...cartItems] } });
   };
 
   const handleCartClick = (pizza) => {
-    setCartItems((prevItems) => [...prevItems, pizza]);
-    console.log(setCartItems);
+    alert("장바구니에 추가하였습니다.");
+    const updatedCartItems = Array.isArray(cartItems) ? [...cartItems, pizza] : [pizza];
+    setCartItems(updatedCartItems);
+    location.state = updatedCartItems; // Update location.state with new cart items
   };
+
   useEffect(() => {
     axios.get("/json/data.json").then((response) => {
       setPosts(response.data);
@@ -74,6 +77,16 @@ function Posts() {
     setPage(1);
   }, [selectedCategory]);
 
+  useEffect(() => {
+    const state = location.state;
+    console.log(state);
+
+
+      setCartItems(state);
+
+    console.log(cartItems);
+
+  }, [location.state]);
   const handleCategoryClick = (category) => {
     setSelectedCategory(category);
     setPosts(originalPosts);
@@ -105,12 +118,12 @@ function Posts() {
 
   return (
       <div className="Layout">
-        <header>
+        <header id="menu_header">
           <Menu_header></Menu_header>
         </header>
 
         <main>
-          <div className="container">
+          <div className="container" id="menu_container">
             <table className="kategorie_bar">
               <tbody>
               <tr>
@@ -183,12 +196,16 @@ function Posts() {
                         </div>
                       </div>
                       <div className="link">
-                        <div className="goto" onClick={handleDetailClick}>
-                          <div className="info">
-                            <img src="img/돋보기.png" alt="상세보기"></img>상세보기
+                        <div className="goto" >
+
+                          <div className="info" onClick={() => handleDetailClick({ id, img, title, tag, large, update, category, reguler, metarial })}>
+                            <img src="img/돋보기.png"
+                              alt="상세보기"></img>상세보기
                           </div>
+
                           <div className="cart" onClick={() => handleCartClick({ id, img, title, tag, large, update, category, reguler, metarial })}>
-                            <img src="img/장바구니.png" alt="장바구니"></img>장바구니
+                            <img src="img/장바구니.png"
+                                 alt="장바구니"></img>장바구니
                           </div>
                         </div>
                       </div>
@@ -196,7 +213,7 @@ function Posts() {
                 ))}
           </div>
         </main>
-        <footer>
+        <footer id="menu_footer">
           <Pagination
               total={totalPosts}
               limit={limit}
@@ -208,6 +225,6 @@ function Posts() {
         </footer>
       </div>
   );
-}
 
+}
 export default Posts;
