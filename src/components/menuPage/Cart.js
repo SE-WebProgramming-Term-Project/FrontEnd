@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate, Link } from "react-router-dom";
 import "./css/Cart.css";
+import Nav from"../Nav/Nav"
+
 import * as PropTypes from "prop-types";
 
 
@@ -8,8 +10,6 @@ import * as PropTypes from "prop-types";
 function Cart() {
     const location = useLocation();
     const cartItems = location.state && location.state.cartItems ? location.state.cartItems : [];
-
-
     const [counts, setCounts] = useState(cartItems.map(() => 1));
     const [locationState, setLocationState] = useState(cartItems);
 
@@ -65,7 +65,8 @@ function Cart() {
     return (
 
         <div>
-            <header>
+            <Nav/>
+            <header id="cart_header">
                 <div className="pc-pizzamenu-top-text">
                     <p className="pizzamenu-top-text-body2">장바구니</p>
                 </div>
@@ -133,7 +134,7 @@ function Cart() {
                     : (<div>
                         <p>장바구니가 비어있습니다.</p>
                         <div className="button-layout">
-                            <Link to="/" state={locationState} className="menu-add-button">
+                            <Link to="/Posts" state={locationState} className="menu-add-button">
                                 메뉴추가
                             </Link>
                         </div>

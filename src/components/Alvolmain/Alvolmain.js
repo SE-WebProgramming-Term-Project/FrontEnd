@@ -1,6 +1,10 @@
 
 import './css/Alvolmain.css';
 import {useState, useEffect, useRef} from 'react';
+import Nav from"../Nav/Nav"
+
+
+
 function Alvolmain() {
     const IMGLEN = 4;
     const IMG = [
@@ -32,6 +36,7 @@ function Alvolmain() {
 
     return (
         <div id="main_container">
+            <Nav></Nav>
             <div className = 'imgContainer'>
                 <div className="mySlides">
                     <img src={IMG[idx]} />

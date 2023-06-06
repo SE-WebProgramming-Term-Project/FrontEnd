@@ -1,11 +1,14 @@
 
 import './css/UserMypage.css';
-
-
+import Nav from "../Nav/Nav";
+import React from "react";
+import ChangeInform from "../ChangeInform/ChangeInform";
 
 function UserMypage() {
   return (
     <div>
+        <Nav/>
+
     <div className="MypageContainer">
        
       <div className='mypagehedder'>
@@ -31,9 +34,8 @@ function UserMypage() {
             <div className='tabtext'>회원탈퇴</div>
         </div>
       </div>
-      
-      </div> 
-      
+      </div>
+        <ChangeInform/>
     </div>
     
   );

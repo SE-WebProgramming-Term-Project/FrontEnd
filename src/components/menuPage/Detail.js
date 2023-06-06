@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import Menu_header from "./Menu_header";
 import "./css/Detail.css";
 import "./css/Menu_header.css";
+import Nav from"../Nav/Nav"
 
 function Detail() {
     const location = useLocation();
@@ -11,7 +12,8 @@ function Detail() {
     return (
 
         <div>
-            <header>
+            <header id="detail_header">
+                <Nav/>
                 <Menu_header/>
             </header>
             <main id="detail_main">
