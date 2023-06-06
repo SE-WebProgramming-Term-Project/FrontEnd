@@ -122,7 +122,7 @@ function Cart() {
 
                             </div>
                             <div className="button-layout">
-                                <Link to="/" state={locationState} className="menu-add-button">
+                                <Link to="/Posts" state={locationState} className="menu-add-button">
                                     메뉴추가
                                 </Link>
                                 <div className="basic-button">주문하기</div>
