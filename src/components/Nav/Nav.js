@@ -1,21 +1,37 @@
 
 import './css/Nav.css';
 import React, {useState} from "react"
-
+import { useNavigate} from "react-router-dom";
 function Nav() {
+    const navigate = useNavigate();
     const [toggle, setToggle] = useState(true)
     const toggleMenu = () =>{
       setToggle(toggle => !toggle)
+    }
+    const handlePostsClick = () => {
+        navigate("/Posts");
+    };
+    const handleMainClick = () =>{
+        navigate("/");
+    }
+    const handlUserMyPageClick = () =>{
+        navigate("/UserMypage");
+    }
+    const handleOrderHistoryClick = () =>{
+        navigate("/OrderHistory")
+    }
+    const handleChangeInform = () =>{
+        navigate("/ChangeInform")
     }
   return (
     <div className='NavHeader'>
       <div className='wrapNav'>
             <div className = 'navLeft'>
                 <img className='btn' onClick ={()=>toggleMenu()} src ="./img/sidebutton.png"  />
-                <img className='logo' src ="./img/logo.png"/>
+                <img className='logo' src ="./img/logo.png" onClick={() => handleMainClick()}/>
             </div>
             <div className = 'navMid'>
-              <span className='midText'>피자</span>
+              <span className='midText' onClick={() => handlePostsClick()}>피자</span>
               <span className='midText'>스페셜반반피자</span>
               <span className='midText'>세트</span>
               <span className='midText'>사이드</span>
@@ -25,7 +41,7 @@ function Nav() {
             </div>
             <div className = 'navRight'>
               <div className='RigTextBox'>
-                <span className='rightText'>마이페이지</span>
+                <span className='rightText' onClick={() => handlUserMyPageClick()}>마이페이지</span>
                 <span className='rightText'>회원가입</span>
                 <span className='rightText'>로그인</span>
               </div>
@@ -35,8 +51,8 @@ function Nav() {
             <div className = {toggle ? "navTab activetoggle" : "navTab"} >
               <div className='tabContent'>
                 <div className='wrapTabItem'>
-                <div class="tabTitle">피자</div>
-                <div class="tabItem">전체피자</div>
+                <div class="tabTitle" onClick={() => handlePostsClick()}>피자</div>
+                <div class="tabItem" onClick={() => handlePostsClick()} >전체피자</div>
                 <div class="tabItem">스폐셜반반피자</div>
                 <div class="tabItem">세트메뉴</div>
                 <div class="tabItem">하프앤하프</div>
@@ -59,12 +75,12 @@ function Nav() {
                 <div class="tabItem">현위치 찾기</div>
                 </div>
                 <div className='wrapTabItem'>
-                <div class="tabTitle">마이페이지</div>
-                <div class="tabItem">주문내역</div>
+                <div class="tabTitle" onClick={() => handlUserMyPageClick()}>마이페이지</div>
+                <div class="tabItem" onClick={() => handleOrderHistoryClick()}>주문내역</div>
                 <div class="tabItem">쿠폰함</div>
                 <div class="tabItem">MY CLASS</div>
                 <div class="tabItem">비행기스탬프</div>
-                <div class="tabItem">정보수정</div>
+                <div class="tabItem" onClick={()=>handleChangeInform()}>정보수정</div>
                 <div class="tabItem">회원탈퇴</div>
                 </div>
                 <div className='wrapTabItem'>

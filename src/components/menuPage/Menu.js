@@ -4,7 +4,7 @@ import Menu_header from "./Menu_header";
 import './css/Menu.css'
 import { useNavigate, useLocation  } from "react-router-dom";
 import axios from "axios";
-
+import Nav from"../Nav/Nav"
 function Posts() {
   const [posts, setPosts] = useState([]);
   const [originalPosts, setOriginalPosts] = useState([]);
@@ -23,8 +23,10 @@ function Posts() {
   };
 
   const handleGoToCart = () => {
-    navigate("/cart",{ state: { cartItems: [...cartItems] } });
+    const items = Array.isArray(cartItems) ? [...cartItems] : [];
+    navigate("/cart", { state: { cartItems: items } });
   };
+
 
   const handleCartClick = (pizza) => {
     alert("장바구니에 추가하였습니다.");
@@ -119,10 +121,12 @@ function Posts() {
   return (
       <div className="Layout">
         <header id="menu_header">
-          <Menu_header></Menu_header>
+          <Nav/>
+
         </header>
 
         <main>
+          <Menu_header></Menu_header>
           <div className="container" id="menu_container">
             <table className="kategorie_bar">
               <tbody>

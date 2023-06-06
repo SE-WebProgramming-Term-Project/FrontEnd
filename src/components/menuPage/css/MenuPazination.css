@@ -1,6 +1,4 @@
-*{
-  background-color: white;
-}.menu-pagination-nav {
+.menu-pagination-nav {
    display: flex;
    justify-content: center;
    align-items: center;

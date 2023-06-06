@@ -1,6 +1,5 @@
 [
   {
-    "userId": 1,
     "id": 1,
     "img" : "img/pizza1.png",
     "title": "a",
@@ -11,7 +10,6 @@
     "category" : "장인피자",
     "metarial" : ["새우", "치즈", "닭고기"]
   },  {
-  "userId": 1,
   "id": 2,
   "img" : "img/pizza2.png",
   "title": "b",
@@ -23,7 +21,6 @@
   "metarial" : ["새우", "치즈", "닭고기"]
 
 },  {
-  "userId": 1,
   "id": 3,
   "img" : "img/pizza3.png",
   "title": "c",
@@ -34,7 +31,6 @@
   "category" : "달인피자",
   "metarial" : ["새우", "치즈", "닭고기"]
 },  {
-  "userId": 1,
   "id": 4,
   "img" : "img/pizza4.png",
   "title": "d",
@@ -45,7 +41,6 @@
   "category" : "달인피자",
   "metarial" : ["새우", "치즈", "닭고기"]
 },  {
-  "userId": 1,
   "id": 5,
   "img" : "img/pizza5.png",
   "title": "e",
@@ -56,7 +51,6 @@
   "category" : "달인피자",
   "metarial" : ["새우", "치즈", "닭고기"]
 },  {
-  "userId": 1,
   "id": 6,
   "img" : "img/pizza6.png",
   "title": "f",
@@ -67,7 +61,6 @@
   "category" : "명품피자",
   "metarial" : ["새우", "치즈", "닭고기"]
 },  {
-  "userId": 1,
   "id": 7,
   "img" : "img/pizza7.png",
   "title": "g",
@@ -79,7 +72,6 @@
   "metarial" : ["새우", "치즈", "닭고기"]
 
 },  {
-  "userId": 1,
   "id": 8,
   "img" : "img/pizza8.png",
   "title": "h",
