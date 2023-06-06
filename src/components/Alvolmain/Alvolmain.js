@@ -2,10 +2,11 @@
 import './css/Alvolmain.css';
 import {useState, useEffect, useRef} from 'react';
 import Nav from"../Nav/Nav"
-
+import { useNavigate} from "react-router-dom";
 
 
 function Alvolmain() {
+    const navigate = useNavigate();
     const IMGLEN = 4;
     const IMG = [
         "./img/car1.jpg",
@@ -13,6 +14,9 @@ function Alvolmain() {
         "./img/car3.jpg",
         "./img/car4.jpg"
     ]
+    const handlePostsClick = () => {
+        navigate("/Posts");
+    };
     const [idx, setidx] = useState(0);
     const goToNextSlide = () => {
         const index = (idx + 1) % IMGLEN;
@@ -47,7 +51,7 @@ function Alvolmain() {
                 </div>
             </div>
             <div className='containerCt2'>
-                <div className='inner'>
+                <div className='inner'onClick={() => handlePostsClick()}>
                     <img src='./img/deliveryicon.png'/>
                     <span className='innerText'>배달주문</span>
                 </div>
