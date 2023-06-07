@@ -17,12 +17,12 @@ function Detail() {
 
     useEffect(() => {
         axios
-            .get("/json/review.json") // Adjust the path according to your file location
+        .get("http://localhost:5000/review/view", {
+            params: { pizzaId: pizzaInfo.id },
+          }) // Adjust the path according to your file location
             .then((response) => {
-                const filteredReviews = response.data.filter(
-                    (review) => review.pizzaId === pizzaInfo.id
-                );
-                setDetail(filteredReviews);
+                const { reviewData } = response.data;
+        setDetail(reviewData);
             })
             .catch((error) => {
                 console.log(error);
