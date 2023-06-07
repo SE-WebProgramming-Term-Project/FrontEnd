@@ -1,13 +1,26 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { useLocation } from "react-router-dom";
 import Menu_header from "./Menu_header";
 import "./css/Detail.css";
 import "./css/Menu_header.css";
 import Nav from"../Nav/Nav"
-
+import review from"../../../public/json/review.json"
+import MenuPazination from "./MenuPazination";
 function Detail() {
     const location = useLocation();
     const pizzaInfo = location.state.pizzaInfo;
+    console.log(pizzaInfo)
+    const [Detail, setDetail] = useState([]);
+    const [limit, setLimit] = useState(2);
+    const [page, setPage] = useState(1);
+    const offset = (page - 1) * limit;
+
+
+    useEffect(() => {
+        const filteredReviews = review.filter((review) => review.pizzaId === pizzaInfo.id);
+        setDetail(filteredReviews);
+    }, [pizzaInfo.id]);
+
 
     return (
 
