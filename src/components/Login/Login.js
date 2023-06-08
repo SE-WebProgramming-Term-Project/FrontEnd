@@ -16,27 +16,17 @@ function Login() {
 
   const sendLogin = () => {
     axios
-      .get("/json/user.json")
+      .get("http://localhost:5000/user/login", {
+        params: { id: id },
+      })
       .then((response) => {
-        const users = response.data;
-        const userData = users.find((user) => user.id === id);
+        console.log(response.data);
 
-        if (userData) {
-          const userPw = userData.pw;
-
-          if (userPw === pw) {
-            console.log(response);
-            console.log("로그인에 성공했습니다.", response);
-            localStorage.setItem("id", id);
-          } else {
-            console.log(pw);
-            console.log(userPw);
-            console.log(userData);
-            console.log("로그인 실패");
-            alert("로그인 실패!");
-          }
+        if (pw === response.data.pw) {
+          console.log("로그인 성공");
+          localStorage.setItem("id", id);
         } else {
-          console.log(userData);
+          alert("로그인 실패!");
         }
       })
       .catch((err) => {
