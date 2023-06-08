@@ -49,14 +49,17 @@ function Orderhistory() {
               <div className='title'>주문매장</div>
               <div className='inner'>{data[i].store}</div>
           </div>
-          <Review/> 
+          
         </div>
         })
       
       
-  : <span>주문내역이 없습니다.</span>}
+  : <span>주문내역이 없습니다.
+    <Review data/> 
+  </span>
+  }
     
-    </div>
+    </div> 
   );
 }
 
