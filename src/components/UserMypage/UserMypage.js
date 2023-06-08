@@ -4,13 +4,32 @@ import Nav from "../Nav/Nav";
 import React from "react";
 import ChangeInform from "../ChangeInform/ChangeInform";
 import {useNavigate} from "react-router-dom";
+import axios from 'axios';
+import { useEffect } from 'react';
 
 function UserMypage() {
     const navigate = useNavigate();
-
-    const handleOrderHistoryClick = () =>{
-        navigate("/OrderHistory")
-    }
+    let data = []
+    let idx =0
+    const handleOrderHistoryClick = () => {
+      axios
+        .get("/json/order.json", { id: "bb" })
+        .then((response) => {
+          const orders = response.data;
+    
+          orders.forEach((order) => {
+            data[idx] = order;
+            idx++;
+          });
+    
+          navigate("/OrderHistory", { state: data });
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    };
+        
+    
     const handleChangeInform = () =>{
         navigate("/ChangeInform")
     }
@@ -49,5 +68,6 @@ function UserMypage() {
     
   );
 }
+
 
 export default UserMypage;
