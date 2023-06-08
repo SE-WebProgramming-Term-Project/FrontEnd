@@ -5,9 +5,13 @@ import axios from 'axios';
 import { useLocation } from 'react-router-dom'; 
 
 function Login() {
-
-  const [id,setId] = useState();
-  const [pw,setpw] = useState();
+  
+  const [id,setId] = useState(0);
+  const [pw,setpw] = useState(0);
+  let data = {
+    id: id,
+    pw: pw
+  }
   const handleidChange = (e) =>{
     setId(e.target.value)
   }
@@ -15,18 +19,35 @@ function Login() {
     setpw(e.target.value)
   }
   const sendLogin = () => {
-    let data = {
-      id: id,
-      pw: pw
-    }
-    axios.post("/json/user.json" , data)
+    
+    axios.post("/json/user.json" , id)
     .then(response => {
         console.log('Data sent successfully!', response);
         localStorage.setItem('id', id)
       })
       .catch(error => {
+        console.log(id)
         alert("로그인에 실패하였습니다.")
       });
+}
+const sendLogin2 = () => {
+  axios.get("/json/user.json",id)
+  .then((response) => {
+    if(response.data[0].pw == pw) {
+      console.log(response);
+      console.log("로그인에 성공했습니다.", response);
+      localStorage.setItem('id', id);
+    } else {
+      console.log(pw);
+      console.log(response.data.pw);
+      console.log(response);
+      console.log("로그인 실패");
+      alert("로그인 실패!")
+    }
+  })
+  .catch((err) => {
+  console.log(err);
+  })
 }
 
 
@@ -57,7 +78,7 @@ function Login() {
             <div>
                 
                 <div className='btnarea'>
-                    <div className='btnlogin' onClick={sendLogin}>로그인</div>
+                    <div className='btnlogin' onClick={sendLogin2}>로그인</div>
                     <div className='btnPhonelogin' >휴대폰번호로 로그인</div>
                 </div>
                 
