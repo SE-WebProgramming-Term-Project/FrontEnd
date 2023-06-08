@@ -9,6 +9,7 @@
     color: #222;
     margin: auto;
     font-family: Noto Sans CJK KR Bold;
+    margin-bottom: 30px;
 }
 .myInform{
     display: flex;
@@ -16,26 +17,24 @@
     flex-direction: column;
 }
 .inputbox{
-    margin-bottom: 20px;
     width: 660px;
     height: 50px;
-    border-bottom: 1px solid #ddd;
-    padding: 15px 10px;
+    margin-bottom: 20px;
 }
 .nameinput{
-    width: 660px;
+    width: 100%;
     height: 50px;
 }
 .idinput{
-    width: 660px;
+    width: 100%;
     height: 50px;
 }
 .pwinput{
-    width: 660px;
+    width: 100%;
     height: 50px;
 }
 .repwinput{
-    width: 660px;
+    width: 100%;
     height: 50px;
 }
 .leftnum{
@@ -44,53 +43,57 @@
     padding: 0 10px;
 }
 .rightnum{
-    width: 238px;
-    height: 19px;
-    margin-left: 10px;
+    width: 280px;
+    height: 50px;
+    margin-left: 30px;
     padding: 15px 80px 15px 10px;
 }
 .phonbtn{
     display: inline-block;
     width: 128px;
-    height: 38px;
+    height: 50px;
     margin-left: 10px;
-    line-height: 38px;
+    line-height: 50px;
+    float: right;
     text-align: center;
     cursor: pointer;
     background-color: #ccc;
     color: #fff;
 }
+.informbox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
 .birthinput{
-    width: 660px;
+    width: 100%;
     height: 50px;
+    margin-top: 10px;
     margin-bottom: 20px;
 }
 .emailInput{
     display: flex;
     justify-content: space-between;
+    width: 660px;
+    line-height: 50px;
+    margin-bottom: 20px;
 }
 .leftemail{
     width: 290px;
-    height: 38px;
+    height: 50px;
+    
 }
 .rightemail{
     width: 332px;
-    height: 38px;
+    height: 50px;
+    
 }
 .address{
-    width: 500px;
-    height: 38px;
+    width: 540px;
+    height: 50px;
 }
-.searchaddress{
-    display: inline-block;
-    width: 112px;
-    background-color: #ccc;
-    color: #fff;
-    height: 38px;
-    margin-left: 10px;
-    text-align: center;
-    line-height: 38px;
-}
+
 .streetaddress{
     width: 100%;
     height: 50px;
@@ -110,6 +113,16 @@
     text-align: center;
     display: inline-block;
     font-size: 22px;
+}
+.searchaddress{
+    display: inline-block;
+    width: 110px;
+    background-color: #ccc;
+    color: #fff;
+    height: 50px;
+    margin-left: 10px;
+    text-align: center;
+    line-height: 50px;
 }
 .okbtn{
     width: 325px;
