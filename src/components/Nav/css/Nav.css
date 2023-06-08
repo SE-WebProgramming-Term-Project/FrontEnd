@@ -1,4 +1,10 @@
-
+*{}
+#sjNavHeader{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 .wrapNav{
     display: flex;
     position: relative;
@@ -7,6 +13,12 @@
     align-items: center;
     background-color: #41b6e6;;
     justify-content: space-between;
+}
+.rightText{
+    cursor: pointer;
+}
+.RigImgBox{
+    cursor: pointer;
 }
 .navLeft{
     display: flex;
@@ -66,6 +78,8 @@
 .navTab{
     background-color: #41b6e6;
     width: 100%;
+    position: absolute;
+    top: 80px;
     display: flex;
     justify-content: center;
 }
@@ -80,7 +94,7 @@
     margin: 0 40px;
 }
 .wrapTabItem{
-    margin-top: 48px;
+    margin-top: 10px;
     margin-right: 16px;
 }
 .tabTitle{
@@ -88,6 +102,7 @@
     font-size: 21px;
     min-width: 123px;
     margin-bottom: 26px;
+    
     cursor: pointer;
     font-weight: 400;
 }

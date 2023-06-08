@@ -7,6 +7,7 @@ import Alvolmain from "./components/Alvolmain/Alvolmain";
 import UserMypage from "./components/UserMypage/UserMypage";
 import Orderhistory from "./components/Orderhistory/Orderhistory";
 import ChangeInform from "./components/ChangeInform/ChangeInform";
+import Login from "./components/Login/Login";
 function App() {
     return (
         <Routes>
@@ -17,6 +18,7 @@ function App() {
             <Route path="/UserMypage" element={<UserMypage />} />
             <Route path="/Orderhistory" element={<Orderhistory />} />
             <Route path="/ChangeInform" element={<ChangeInform />} />
+            <Route path="/Login" element= {<Login/>}/>
         </Routes>
     );
 }
