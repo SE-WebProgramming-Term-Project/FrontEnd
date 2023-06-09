@@ -1,31 +1,23 @@
-import React, { useState } from 'react';
-import './css/AdminMyPage.css';
+import AdminPageHeader from './AdminPageHeader';
+import AdminPageTab from './AdminPageTab';
+import './css/AdminMyPage.css'
+import {Routes, Route} from "react-router-dom";
+import AdminPageMenuRegist from "./AdminPageMenuRegist";
+import AdminPageAnalysis from "./AdminPageAnalysis.js";
 
-
-const AdminMyPage = () => {
-    const handleMenuRegisterClick = () => {
-        console.log('메뉴 등록 버튼이 클릭되었습니다.');
-    };
-
-    const handleSalesQuantityClick = () => {
-        console.log('판매 수량 확인 버튼이 클릭되었습니다.');
-    };
-
+function AdminMyPage() {
     return (
-        <div className='header'>
-            <div className="my-page-container">
-                <h2>마이페이지</h2>
-                <div className="button-container">
-                    <button className="menu-register-button" onClick={handleMenuRegisterClick}>
-                        메뉴 등록
-                    </button>
-                    <button className="sales-quantity-button" onClick={handleSalesQuantityClick}>
-                        판매 수량 확인
-                    </button>
-                </div>
+        <div className="admin_page">
+            <div className="admin_page_content">
+                <AdminPageHeader/>
+                <AdminPageTab/>
+                <Routes>
+                    <Route path="/MenuReg" element={<AdminPageMenuRegist/>}/>
+                    <Route path="/Stats" element={<AdminPageAnalysis/>}/>
+                </Routes>
             </div>
         </div>
-    );
-};
+    )
+}
 
 export default AdminMyPage;
