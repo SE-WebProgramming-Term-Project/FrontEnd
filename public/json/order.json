@@ -1,0 +1,20 @@
+[
+    {
+        "orderNum" : 1,
+        "id" : "bb",
+        "orderDate" : "2023-06-09 13:49:55",
+        "orderMenu" : [1, 2, 3],
+        "totalPrice" : 69000,
+        "dest" : "대구",
+        "store": "대구점"
+    },
+    {
+        "orderNum" : 2,
+        "id" : "bb",
+        "orderDate" : "2023-06-09 13:50:55",
+        "orderMenu" : [1, 2, 3],
+        "totalPrice" : 178000,
+        "dest" : "대구2",
+        "store": "대구2점"
+    }
+]

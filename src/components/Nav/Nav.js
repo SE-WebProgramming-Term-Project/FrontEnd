@@ -2,6 +2,7 @@
 import './css/Nav.css';
 import React, {useState} from "react"
 import { useNavigate} from "react-router-dom";
+import { useLocation } from 'react-router-dom'; 
 function Nav() {
     const navigate = useNavigate();
     const [toggle, setToggle] = useState(true)
@@ -14,6 +15,12 @@ function Nav() {
     const handleMainClick = () =>{
         navigate("/");
     }
+    const handleLoginClick = () =>{
+      navigate("/Login")
+    }
+    const handleLogoutClick = () =>{
+      localStorage.removeItem('id')
+    }
     const handlUserMyPageClick = () =>{
         navigate("/UserMypage");
     }
@@ -24,7 +31,7 @@ function Nav() {
         navigate("/ChangeInform")
     }
   return (
-    <div className='NavHeader'>
+    <div id='sjNavHeader'>
       <div className='wrapNav'>
             <div className = 'navLeft'>
                 <img className='btn' onClick ={()=>toggleMenu()} src ="./img/sidebutton.png"  />
@@ -43,10 +50,12 @@ function Nav() {
               <div className='RigTextBox'>
                 <span className='rightText' onClick={() => handlUserMyPageClick()}>마이페이지</span>
                 <span className='rightText'>회원가입</span>
-                <span className='rightText'>로그인</span>
+                {localStorage.getItem("id") ==null ?
+                <span className='rightText' onClick={() => handleLoginClick()}>로그인</span>:
+                <span className='rightText' onClick={() => handleLogoutClick()}>로그아웃</span>
+                }
               </div>
               <div className='RigImgBox'><img className='rigImg' src='./img/p-icon.png'/></div>
-            </div>
             </div>
             <div className = {toggle ? "navTab activetoggle" : "navTab"} >
               <div className='tabContent'>
@@ -93,6 +102,8 @@ function Nav() {
                 </div>
               </div>
             </div>
+            </div>
+            
     </div>
   );
 }

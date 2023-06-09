@@ -1,0 +1,20 @@
+[
+    {
+        "name" : "a",
+        "id" : "bb",
+        "pw" : "cc",
+        "phone" : "010-1111-2222",
+        "birth" : "990919",
+        "address" : "seoul",
+        "detailAddress": "dobong"
+    },
+    {
+        "name" : "a",
+        "id" : "bb2",
+        "pw" : "cc2",
+        "phone" : "010-1111-2222",
+        "birth" : "990919",
+        "address" : "seoul",
+        "detailAddress": "dobong"
+    }
+]
