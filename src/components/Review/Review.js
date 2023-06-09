@@ -47,7 +47,7 @@ const Review = (props) => {
   // };
 
   const sendReview = () => {
-    console.log(props.data.orderMenu);
+    console.log(props);
   
     const reviews = props.data.orderMenu.map((id) => ({
       id: 4,
