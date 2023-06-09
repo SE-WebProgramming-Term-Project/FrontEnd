@@ -1,23 +1,27 @@
-import {Link, useLocation} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import './css/AdminPageTab.css'
+import React from "react";
 
 function AdminPageTab() {
-    const location = useLocation();
+    const navigate = useNavigate();
+
+    const handlePizzaRegist = () => {
+        navigate("/AdminPageMenuRegist");
+    }
+
+    const handlePizzaAnalysis = () => {
+        navigate("/AdminPageAnalysis");
+    }
 
     return (
         <div className="menutab-page-whole-div">
             <div className="menutab-page-menutab">
-                <Link to="/adminPage/MenuRegist">
-                    <div className="menutab-page-title">
-                        <h5 className={location.pathname === "/adminPage/MenuRegist" ? "selected" : ""}>메뉴등록</h5>
-                    </div>
-                </Link>
-
-                <Link to="/adminPage/Analysis">
-                    <div className="menutab-page-title">
-                        <h5 className={location.pathname === "/adminPage/Analysis"? "selected" : ""}>판매수량확인</h5>
-                    </div>
-                </Link>
+                <div className="menutab-page-title">
+                    <span className='rightText' onClick={() => handlePizzaRegist()}>피자 등록</span>
+                </div>
+                <div className="menutab-page-title">
+                    <span className='rightText' onClick={() => handlePizzaAnalysis()}>판매 수량 확인</span>
+                </div>
             </div>
         </div>
     );
