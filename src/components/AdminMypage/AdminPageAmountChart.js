@@ -20,11 +20,12 @@ ChartJS.register(
 );
 
 export function AdminPageAmountChart({labels, amounts}) {
-    const options = {
+    const chartOptions = {
         responsive: true,
         plugins: {
             legend: {
                 display: false,
+                position: 'top',
             },
             title: {
                 display: true,
@@ -37,12 +38,12 @@ export function AdminPageAmountChart({labels, amounts}) {
         labels,
         datasets: [
             {
-                label: '수량',
+                label: '판매수량',
                 data: amounts,
                 backgroundColor: 'rgba(53, 162, 235, 0.5)',
             },
         ],
     };
 
-    return <Bar options={options} data={data} />;
+    return <Bar options={chartOptions} data={data} />;
 }
