@@ -2,18 +2,55 @@ import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate, Link } from "react-router-dom";
 import "./css/Cart.css";
 import Nav from"../Nav/Nav"
-
+import axios from "axios";
 import * as PropTypes from "prop-types";
-
-
 
 function Cart() {
     const location = useLocation();
     const cartItems = location.state && location.state.cartItems ? location.state.cartItems : [];
     const [counts, setCounts] = useState(cartItems.map(() => 1));
     const [locationState, setLocationState] = useState(cartItems);
+    const [userData, setUserData] = useState(null); // Added state for user data
+    const navigate = useNavigate();
 
     console.log(location);
+    const handleOrder = () => {
+        const orderMenu = locationState.map((pizza) => pizza.id);
+        const orderData = {
+            orderMenu: orderMenu,
+            id: userData._id,
+            dest: userData._adress + " " + userData.detailAdress,
+            totalPrice: calculateTotalPrice(),
+            orderDate: new Date().toString(),
+            store: "대구점"
+        };
+
+        axios.post("http://localhost:5000/order/buy", orderData)
+            .then((response) => {
+                console.log(response.data);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+
+        navigate("/");
+    };
+
+    useEffect(() => {
+        const userId = localStorage.getItem("id");
+
+        axios
+            .get("http://localhost:5000/user/view", {
+                params: { userId },
+            })
+            .then((response) => {
+                const { userData } = response.data;
+                setUserData(userData); // Update userData with fetched user data
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }, []);
     const handleDecrement = (index) => {
         if (counts[index] > 1) {
             const newCounts = [...counts];
@@ -126,22 +163,19 @@ function Cart() {
                                 <Link to="/Posts" state={locationState} className="menu-add-button">
                                     메뉴추가
                                 </Link>
-                                <div className="basic-button">주문하기</div>
+                                <div className="basic-button" onClick={()=>{handleOrder()}}>주문하기</div>
                             </div>
                         </ul>
 
                     )
                     : (<div>
-                        <p>장바구니가 비어있습니다.</p>
-                        <div className="button-layout">
-                            <Link to="/Posts" state={locationState} className="menu-add-button">
-                                메뉴추가
-                            </Link>
+                            <p>장바구니가 비어있습니다.</p>
+                            <div className="button-layout">
+                                <Link to="/Posts" state={locationState} className="menu-add-button">
+                                    메뉴추가
+                                </Link>
+                            </div>
                         </div>
-                    </div>
-
-
-
                     )}
 
             </main>
