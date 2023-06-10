@@ -200,7 +200,7 @@ function Posts() {
 
                           <div className="info" onClick={() => handleDetailClick({ _id, img, title, tag, large, update, category, regular, metarial, count })}>
                             <img src="img/돋보기.png"
-                              alt="상세보기"></img>상세보기
+                              alt="리뷰보기"></img>리뷰보기
                           </div>
 
                           <div className="cart" onClick={() => handleCartClick({_id, img, title, tag, large, update, category, regular, metarial, count })}>
