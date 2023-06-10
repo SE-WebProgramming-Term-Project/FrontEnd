@@ -27,23 +27,17 @@ function AdminPageAnalysis() {
     }, []);
 
     useEffect(() => {
-        Promise.all([
-            axios.get("http://localhost:5000/order/count"),
-            axios.get("http://localhost:5000/pizza/findAll"),
-        ])
-            .then(([ordersResponse, pizzasResponse]) => {
-                const orders = ordersResponse.data;
-                const pizzas = pizzasResponse.data;
+        axios
+            .get('http://localhost:5000/order/findAll')
+            .then((response) => {
+                const orders = response.data.orderData;
                 const pizzaSales = {};
                 orders.forEach((order) => {
                     order.orderMenu.forEach((pizzaId) => {
-                        const pizza = pizzas.find((pizza) => pizza.id === pizzaId);
-                        if (pizza) {
-                            if (!pizzaSales[pizza.title]) {
-                                pizzaSales[pizza.title] = 0;
-                            }
-                            pizzaSales[pizza.title]++;
+                        if (!pizzaSales[pizzaId]) {
+                            pizzaSales[pizzaId] = 0;
                         }
+                        pizzaSales[pizzaId]++;
                     });
                 });
                 setPizzaSales(pizzaSales);
@@ -53,9 +47,8 @@ function AdminPageAnalysis() {
             });
     }, []);
 
-    // 차트에 표시할 데이터를 계산합니다.
-    const labels1 = Object.keys(pizzaSales);
-    const amounts = Object.values(pizzaSales);
+    const pizzaNames = Object.keys(pizzaSales);
+    const pizzaQuantities = Object.values(pizzaSales);
 
     const labels2 = ['일', '월', '화', '수', '목', '금', '토'];
     const sales = salesByDayOfWeek;
@@ -67,7 +60,7 @@ function AdminPageAnalysis() {
                     메뉴별 판매수량
                 </div>
                 <div className="chart-area">
-                    <AdminPageAmountChart labels={labels1} amounts={amounts} />
+                    <AdminPageAmountChart labels={pizzaNames} amounts={pizzaQuantities} />
                 </div>
                 <div className="top-text">
                     요일별 총 매출
