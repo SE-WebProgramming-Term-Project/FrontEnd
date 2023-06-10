@@ -30,7 +30,9 @@ function UserMypage() {
     // };
 
     const handleOrderHistoryClick = () => {
-      navigate("/OrderHistory");
+      localStorage.getItem("id") != null ? 
+      navigate("/OrderHistory"):
+      navigate("/Login")
       
         }
         
