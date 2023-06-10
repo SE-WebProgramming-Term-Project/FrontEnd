@@ -10,9 +10,9 @@ function AdminPageAnalysis() {
 
     useEffect(() => {
         axios
-            .get("http://localhost:5000/orders")
+            .get("http://localhost:5000/order/findAll")
             .then((response) => {
-                const orders = response.data;
+                const orders = response.data.orderData;
                 const salesByDayOfWeek = [0, 0, 0, 0, 0, 0, 0];
                 orders.forEach((order) => {
                     const orderDate = new Date(order.orderDate);
@@ -28,8 +28,8 @@ function AdminPageAnalysis() {
 
     useEffect(() => {
         Promise.all([
-            axios.get("http://localhost:5000/orders"),
-            axios.get("http://localhost:5000/pizzas"),
+            axios.get("http://localhost:5000/order/count"),
+            axios.get("http://localhost:5000/pizza/findAll"),
         ])
             .then(([ordersResponse, pizzasResponse]) => {
                 const orders = ordersResponse.data;

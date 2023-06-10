@@ -15,11 +15,11 @@ function Cart() {
 
     console.log(location);
     const handleOrder = () => {
-        const orderMenu = locationState.map((pizza) => pizza.id);
+        const orderMenu = locationState.map((pizza) => pizza._id);
         const orderData = {
             orderMenu: orderMenu,
-            id: userData._id,
-            dest: userData._adress + " " + userData.detailAdress,
+            id: userData.id,
+            dest: userData.address + " " + userData.detailAddress,
             totalPrice: calculateTotalPrice(),
             orderDate: new Date().toString(),
             store: "대구점"
@@ -37,15 +37,19 @@ function Cart() {
     };
 
     useEffect(() => {
-        const userId = localStorage.getItem("id");
-
+        const id = localStorage.getItem("id");
+        console.log(id);
         axios
             .get("http://localhost:5000/user/view", {
-                params: { userId },
+                params: { id },
             })
             .then((response) => {
-                const { userData } = response.data;
-                setUserData(userData); // Update userData with fetched user data
+                const tmpData = response.data;
+
+                console.log(tmpData);
+                setUserData(tmpData); // Update userData with fetched user data
+            
+                console.log(userData);
             })
             .catch((error) => {
                 console.log(error);
