@@ -26,7 +26,9 @@ function Login() {
         if (pw === response.data.pw) {
           console.log("로그인 성공");
           localStorage.setItem("id", id);
-          response.data.type == 0 ?   navigate("/") : navigate("/AdminMyPage")
+          // response.data.type == 0 ?   navigate("/") : navigate("/AdminMyPage")
+          localStorage.setItem("sjtype", response.data.type);
+          navigate("/")
         } else {
           alert("로그인 실패!");
         }

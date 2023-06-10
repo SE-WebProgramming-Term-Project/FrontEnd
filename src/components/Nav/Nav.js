@@ -28,6 +28,8 @@ function Nav() {
       navigate("/");
     }
     const handlUserMyPageClick = () =>{
+      console.log(localStorage);
+
       localStorage.getItem("id")!= null ?
       localStorage.getItem("sjtype") == 1 ?   navigate("/AdminMyPage") : navigate("/UserMypage") 
       :
