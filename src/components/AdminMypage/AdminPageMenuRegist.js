@@ -1,9 +1,12 @@
-import { Link } from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import "./css/AdminPageMenuRegist.css";
 
 function AdminPageMenuRegist() {
+
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     title: "",
     tag: "",
@@ -59,7 +62,12 @@ function AdminPageMenuRegist() {
     } else {
       sendData(null);
     }
+    navigate("/AdminMyPage");
   };
+
+  const handleAdminMyPage = () => {
+    navigate("/AdminMyPage")
+  }
 
   const sendData = (base64Data) => {
     let now = new Date();
@@ -172,12 +180,10 @@ function AdminPageMenuRegist() {
               />
             </div>
             <div className="btn-area">
-              <Link to="/">
-                <div className="btn-cancel">취소</div>
+                <div className="btn-cancel" onClick={handleAdminMyPage}>취소</div>
                 <div className="btn-ok" onClick={submit}>
                   확인
                 </div>
-              </Link>
             </div>
           </form>
         </div>
