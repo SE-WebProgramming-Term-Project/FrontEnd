@@ -18,17 +18,27 @@ function Posts() {
   const navigate = useNavigate();
   const [cartItems, setCartItems] = useState([]);
   const location = useLocation(); // useLocation 추가
-
+  const formatPrice = (price) => { //1000단위 
+    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
   const handleDetailClick = (pizzaInfo) => {
     console.log(pizzaInfo);
     navigate("/detail", { state: { pizzaInfo } });
   };
 
+  useEffect(() => {
+    const storedCart = localStorage.getItem('cart');
+    if (storedCart) {
+      setCartItems(JSON.parse(storedCart));
+    }
+  }, []);
+
   const handleCartClick = (pizza) => {
-    alert("장바구니에 추가하였습니다.");
+    alert('장바구니에 추가하였습니다.');
     const updatedCartItems = Array.isArray(cartItems) ? [...cartItems, pizza] : [pizza];
     setCartItems(updatedCartItems);
-    localStorage.setItem("cart",JSON.stringify(cartItems));
+    localStorage.setItem('cart', JSON.stringify(updatedCartItems));
+    console.log(localStorage.getItem('cart'));
   };
 
   useEffect(() => {
@@ -40,27 +50,27 @@ function Posts() {
   }, []);
 
   useEffect(() => {
-    let sortedPosts = [...posts];
+  let sortedPosts = [...originalPosts];
 
-    if (kategorie === 1) {
-      sortedPosts = sortedPosts.sort((a, b) => {
-        const dateA = new Date(a.update);
-        const dateB = new Date(b.update);
-        return dateB - dateA;
-      });
-    } else if (kategorie === 2) {
-      sortedPosts = sortedPosts.sort((a, b) => {
-        return parseInt(a.large) - parseInt(b.large);
-      });
-    } else if (kategorie === 3) {
-      sortedPosts = sortedPosts.sort((a, b) => {
-        return parseInt(b.large) - parseInt(a.large);
-      });
-    }
+  if (selectedCategory !== "전체") {
+    sortedPosts = sortedPosts.filter((post) => post.category === selectedCategory);
+  }
 
-    setPosts(sortedPosts);
-    setPage(1);
-  }, [kategorie]);
+  if (kategorie === 1) {
+    sortedPosts = sortedPosts.sort((a, b) => {
+      const dateA = new Date(a.update.split('T')[0]);
+      const dateB = new Date(b.update.split('T')[0]);
+      return dateB - dateA;
+    });
+  } else if (kategorie === 2) {
+    sortedPosts = sortedPosts.sort((a, b) => parseInt(a.large) - parseInt(b.large));
+  } else if (kategorie === 3) {
+    sortedPosts = sortedPosts.sort((a, b) => parseInt(b.large) - parseInt(a.large));
+  }
+
+  setPosts(sortedPosts);
+  setPage(1);
+}, [kategorie, selectedCategory, originalPosts]);
 
   useEffect(() => {
     const tds = document.querySelectorAll(".kategorie_bar td");
@@ -155,7 +165,7 @@ function Posts() {
                   }}
                   disabled={selectedCategory !== "전체"}
               >
-                <option value="1">신제품순</option>
+                <option value="1" selected >신제품순</option>
                 <option value="2">가격낮은순</option>
                 <option value="3">가격높은순</option>
               </select>
@@ -175,9 +185,9 @@ function Posts() {
                         <h6>{tag}</h6>
                         <div className="price">
                           <h5 className="large">L</h5>
-                          <h5 className="cost">{large}</h5>
+                          <h5 className="cost">{formatPrice(large)}</h5>
                           <h5 className="large">R</h5>
-                          <h5 className="cost">{regular}</h5>
+                          <h5 className="cost">{formatPrice(regular)}</h5>
                         </div>
                         <div className="metarials">
                           {metarial.map((item, index) => (

@@ -10,7 +10,9 @@ function Cart() {
     const [locationState, setLocationState] = useState(cartItems);
     const [userData, setUserData] = useState();
     const navigate = useNavigate();
-
+    const formatPrice = (price) => { //1000단위 
+        return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      };
     const handleOrder = () => {
         const orderMenu = locationState.map((pizza) => pizza._id);
         const orderData = {
@@ -30,7 +32,8 @@ function Cart() {
             .catch((error) => {
                 console.error(error);
             });
-
+             // 주문 완료 후 cart 항목 제거
+        localStorage.removeItem("cart");
         navigate("/");
     };
 
@@ -75,11 +78,16 @@ function Cart() {
         newCartItems.splice(index, 1);
         setLocationState(newCartItems);
         setCounts((prevCounts) => {
-            const newCounts = [...prevCounts];
-            newCounts.splice(index, 1);
-            return newCounts;
+          const newCounts = [...prevCounts];
+          newCounts.splice(index, 1);
+          return newCounts;
         });
-    };
+      
+        // Remove item from localStorage
+        const updatedCart = [...cartItems];
+        updatedCart.splice(index, 1);
+        localStorage.setItem("cart", JSON.stringify(updatedCart));
+      };
 
     const calculateTotalPrice = () => {
         let totalPrice = 0;
@@ -93,14 +101,17 @@ function Cart() {
     useEffect(() => {
         console.log("Counts have changed:", counts);
         const updatedPizzaInfo = counts.map((count, index) => {
-            const pizza = locationState[index];
-            return {
-                ...pizza,
-                count,
-            };
+          const pizza = locationState[index];
+          return {
+            ...pizza,
+            count,
+          };
         });
         console.log("Updated pizza information:", updatedPizzaInfo);
-    }, [counts, locationState]);
+        
+        const totalPrice = calculateTotalPrice();
+        console.log("Total price:", totalPrice);
+      }, [counts, locationState]);
 
 
 
@@ -119,7 +130,6 @@ function Cart() {
                     <div className="order-basket-list-change">변경</div>
                     <div className="order-basket-list-change">삭제</div>
                 </div>
-
             </header>
             <main>
                 {locationState.length > 0 ? (
@@ -145,7 +155,7 @@ function Cart() {
                                             onClick={() => handleIncrement(index)}
                                         />
                                         {/* Display other pizza information as needed */}
-                                        <p className="price_large">{pizza.large}</p>
+                                        <p className="price_large">{formatPrice(pizza.large * counts[index])}</p>
                                         <img
                                             src="data:image/svg+xml;base64,PHN2ZyBpZD0i64W47Jej7KeAIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MiIgaGVpZ2h0PSI5MiIgdmlld0JveD0iMCAwIDkyIDkyIj4KICA8ZGVmcz4KICAgIDxzdHlsZT4KICAgICAgLmNscy0xIHsKICAgICAgICBmaWxsOiBub25lOwogICAgICB9CgogICAgICAuY2xzLTIsIC5jbHMtMyB7CiAgICAgICAgZmlsbDogIzAwMDAwMDsKICAgICAgfQoKICAgICAgLmNscy0yIHsKICAgICAgICBmaWxsLXJ1bGU6IGV2ZW5vZGQ7CiAgICAgIH0KICAgIDwvc3R5bGU+CiAgPC9kZWZzPgogIDxjaXJjbGUgY2xhc3M9ImNscy0xIiBjeD0iNDYiIGN5PSI0NiIgcj0iNDYiLz4KICA8cGF0aCBpZD0iYnRuX3giIGNsYXNzPSJjbHMtMiIgZD0iTTI3My4wMTQsNzAxTDI3NSw2OTkuMDEzLDMwMi45ODYsNzI3LDMwMSw3MjguOTg2Wm0yOS45NzIsMEwzMDEsNjk5LjAxMywyNzMuMDE0LDcyNywyNzUsNzI4Ljk4NloiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0yNDIgLTY2OCkiLz4KICA8cmVjdCBpZD0i7IKs6rCB7ZiVXzEiIGRhdGEtbmFtZT0i7IKs6rCB7ZiVIDEiIGNsYXNzPSJjbHMtMyIgeD0iNDQiIHk9IjQ0IiB3aWR0aD0iNCIgaGVpZ2h0PSI0Ii8+Cjwvc3ZnPgo="
                                             alt="장바구니 아이템 닫기" className="x-button"
@@ -159,7 +169,7 @@ function Cart() {
                                 <div className="total-layout">
                                     <h4 className="sum-total">합계</h4>
                                     <h4 className="total">총
-                                        <span>{calculateTotalPrice()}</span>
+                                        <span>{formatPrice(calculateTotalPrice())}</span>
                                         원
                                     </h4></div>
 
