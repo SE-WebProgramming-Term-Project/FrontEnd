@@ -4,25 +4,41 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 function ChangeInform() {
+  let rightnum;
   const [name, setName] = useState();
   const [id, setId] = useState();
   const [pw, setpw] = useState();
   const [phone, setphone] = useState();
+  const [rigphone, setrigphone] = useState();
   const [birth, setbirth] = useState();
   const [email, setemail] = useState();
   const [addres, setaddres] = useState();
   const [detailadd, setdetail] = useState();
   const [data, setdata] = useState({});
+  const [leftEmail, setleftEmail] = useState('');
+  const [rigEmail, setrigEmail] = useState('');
   //   let data = {};
 
+  const PhoneNumberParser = (phoneNumber) => {
+  
+    const parsedNumber = phoneNumber.split('-');
+  
+    const countryCode = parsedNumber[0];
+    const parsedPhoneNumber = parsedNumber[1] + parsedNumber[2];
+    setrigphone(1*(parsedNumber[1] + parsedNumber[2]))
+  }
+
   const handlepwChange = (e) => {
-    setaddres(e.target.value);
+    setpw(e.target.value);
+  };
+  const handlerigEChange = (e) => {
+    setrigEmail(e.target.value);
   };
   const handlephoneChange = (e) => {
     setphone(e.target.value);
   };
   const handleemailChange = (e) => {
-    setemail(e.target.value);
+    setleftEmail(e.target.value);
   };
   const handleaddresChange = (e) => {
     setaddres(e.target.value);
@@ -63,26 +79,38 @@ function ChangeInform() {
         console.error("Error sending data:", error);
       });
   };
+  const parseEmail = (email) => {
+    const atIndex = email.indexOf("@");
+    setleftEmail(email.substring(0, atIndex))
+  };
 
-  //   useEffect(() => {
-  //     axios
-  //       .get("/json/user.json", { id: "bb" })
-  //       .then((response) => {
-  //         data = response.data[0];
+    // useEffect(() => {
+    //   axios
+    //     .get("/json/user.json", { id: "bb" })
+    //     .then((response) => {
+          
 
-  //         console.log(data);
-  //         setName(data.name);
-  //         setId(data.id);
-  //         setpw(data.pw);
-  //         setphone(data.phone);
-  //         setbirth(data.birth);
-  //         setaddres(data.address);
-  //         setdetail(data.detailAddress);
-  //       })
-  //       .catch((error) => {
-  //         console.error();
-  //       });
-  //   }, []);
+    //       console.log(response.data);
+    //       let data1 = response.data[0]
+    //       console.log(data1)
+    //       setName(data1.name);
+    //       setId(data1.id);
+    //       setpw(data1.pw);
+    //       setphone(data1.phone);
+          
+    //       setemail(data1.email)
+          
+    //       setbirth(data1.birth);
+    //       setaddres(data1.address);
+    //       setdetail(data1.detailAddress);
+    //       PhoneNumberParser(phone)
+    //       parseEmail(email)
+    //       console.log(email)
+    //     })
+    //     .catch((error) => {
+    //       console.error();
+    //     });
+    // }, []);
 
   useEffect(() => {
     axios
@@ -101,6 +129,8 @@ function ChangeInform() {
         setbirth(userData.birth);
         setaddres(userData.address);
         setdetail(userData.detailAddress);
+        PhoneNumberParser(phone)
+        parseEmail(email)
       })
       .catch((error) => {
         console.log(error);
@@ -153,7 +183,7 @@ function ChangeInform() {
             <option className="017">017</option>
             <option className="019">019</option>
           </select>
-          <input className="rightnum" type="number" disabled></input>
+          <input className="rightnum" type="number" value={rigphone} disabled></input>
           <span className="phonbtn">수정</span>
         </div>
         <div className="informbox">
@@ -162,10 +192,11 @@ function ChangeInform() {
             <input
               className="leftemail"
               type="text"
+              value={leftEmail}
               onChange={handleemailChange}
             ></input>
             @
-            <select className="rightemail">
+            <select className="rightemail" onChange={handlerigEChange} value={rigEmail}>
               <option>naver.com</option>
               <option>daum.net</option>
               <option>hotmaile.com</option>

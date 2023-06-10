@@ -11,48 +11,49 @@ function UserMypage() {
     const navigate = useNavigate();
     let data = []
     let idx =0
-    const handleOrderHistoryClick = () => {
-      axios
-        .get("/json/order.json", { id: "bb" })
-        .then((response) => {
-          const orders = response.data;
-    
-          orders.forEach((order) => {
-            data[idx] = order;
-            idx++;
-          });
-    
-          navigate("/OrderHistory", { state: data });
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    };
-
     // const handleOrderHistoryClick = () => {
     //   axios
-    //     .get("http://localhost:5000/order/view", {
-    //       params: { id: localStorage.getItem("id") },
-    //     })
+    //     .get("/json/order.json", { id: "bb" })
     //     .then((response) => {
-    //       console.log(localStorage.getItem("id"));
-          
-    //       console.log(response.data);
-    //       const orders = response.data.orderData;
-  
+    //       const orders = response.data;
+    
     //       orders.forEach((order) => {
     //         data[idx] = order;
     //         idx++;
     //       });
-  
-    //       console.log(data);
-
+    
     //       navigate("/OrderHistory", { state: data });
     //     })
     //     .catch((error) => {
     //       console.error(error);
     //     });
     // };
+
+    const handleOrderHistoryClick = () => {
+      let menuname = ''
+      axios
+        .get("http://localhost:5000/order/view", {
+          params: { id: localStorage.getItem("id") },
+        })
+        .then((response) => {
+          console.log(localStorage.getItem("id"));
+          
+          console.log(response.data);
+          const orders = response.data.orderData;
+  
+          orders.forEach((order) => {
+            data[idx] = order;
+            idx++;
+          });
+          
+          navigate("/OrderHistory", { state: data });
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+        }
+        
+    };
         
     
     const handleChangeInform = () =>{
@@ -92,7 +93,7 @@ function UserMypage() {
     </div>
     
   );
-}
+
 
 
 export default UserMypage;

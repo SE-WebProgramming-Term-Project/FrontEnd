@@ -1,8 +1,37 @@
-import { useState } from "react";
-import "./css/Review.css";
-import axios from "axios";
+import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
+import './css/Review.css';
+import axios from 'axios';
+
+
+let menuname = []
+let idx = 0
+const StarRating = () => {
+  const [rating, setRating] = useState(0);
+
+  const handleRating = (value) => {
+    setRating(value);
+  };
+
+
+  return (
+    <div className="starcon">
+      {[1, 2, 3, 4, 5].map((value) => (
+        <FontAwesomeIcon
+          key={value}
+          icon={faStar}
+          className={`star ${value <= rating ? 'active' : ''}`}
+          onClick={() => handleRating(value)}
+        />
+      ))}
+    </div>
+  );
+};
+
+
 const Review = (props) => {
-  const [number, setNum] = useState();
+  const [rating, setNum] = useState();
   const [txt, setTxt] = useState();
 
   const handlenum = (e) => {
@@ -45,13 +74,28 @@ const Review = (props) => {
   //     })
   //     .catch((error) => {});
   // };
+  useEffect(() => {
+    props.data.map((i)=>{axios
+      .get("http://localhost:5000/user/view", {
+        params: { id : {$in: i.orderMenu }
+      }})
+      .then((response) => {
+        menuname[idx]+=response.data.title+" "
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      idx++
+    })
+    
+  }, [])
 
   const sendReview = () => {
     console.log(props);
   
     const reviews = props.data.orderMenu.map((id) => ({
       id: 4,
-      score: number,
+      score: rating,
       evaluation: txt,
       author: props.data.id,
       pizzaId: id,
@@ -69,17 +113,16 @@ const Review = (props) => {
 
   return (
     <div className="reviewcontainer">
-      <div className="starcon">
-        <input className="star" type="number" onChange={handlenum}></input>
-      </div>
+      <StarRating />
       <div className="textcon">
         <textarea className="reviewText" onChange={handletxt}></textarea>
       </div>
       <div className="btncon">
-        <input className="submitbtn" type="submit" onClick={sendReview}></input>
+        <input className="submitbtn" type="submit" onClick={sendReview} />
       </div>
     </div>
   );
-};
+}
+
 
 export default Review;

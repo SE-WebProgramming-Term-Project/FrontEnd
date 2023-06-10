@@ -3,6 +3,7 @@ import './css/Nav.css';
 import React, {useState} from "react"
 import { useNavigate} from "react-router-dom";
 import { useLocation } from 'react-router-dom'; 
+import axios from 'axios';
 function Nav() {
     const navigate = useNavigate();
     const [toggle, setToggle] = useState(true)
@@ -24,12 +25,30 @@ function Nav() {
     const handlUserMyPageClick = () =>{
         navigate("/UserMypage");
     }
-    const handleOrderHistoryClick = () =>{
-        navigate("/OrderHistory")
-    }
+    
+    const handleOrderHistoryClick = () => {
+      let data = []
+    let idx =0
+      axios
+        .get("http://localhost:5000/order/view", { id: "bb" })
+        .then((response) => {
+          const orders = response.data;
+    
+          orders.forEach((order) => {
+            data[idx] = order;
+            idx++;
+          });
+    
+          navigate("/OrderHistory", { state: data });
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+      }
     const handleChangeInform = () =>{
         navigate("/ChangeInform")
     }
+    
     const handleAdminMyPage = () => {
         navigate("/AdminMyPage")
     }

@@ -12,7 +12,25 @@ function Orderhistory() {
  const data = location.state
  console.log("props")
  console.log(data)
+ let menuname = []
+ let idx = 0
  
+ useEffect(() => {
+  props.data.map((i)=>{axios
+    .get("http://localhost:5000/user/view", {
+      params: { id : {$in: i.orderMenu }
+    }})
+    .then((response) => {
+      menuname[idx]+=response.data.title+" "
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+    idx++
+  })
+  idx = 0
+}, [])
+
     
  return (
   <div className="Ordercontainer">
@@ -27,7 +45,7 @@ function Orderhistory() {
           </div>
           <div className="inform">
             <div className="title">주문메뉴</div>
-            <div className="inner">{i.orderMenu}</div>
+            <div className="inner">{menuname[idx]}</div>
           </div>
           <div className="inform">
             <div className="title">결제금액</div>
@@ -43,7 +61,8 @@ function Orderhistory() {
           </div>
           <Review data={i} />
         </div>
-      ))
+        
+      )),idx++
     ) : (
       <span>주문내역이 없습니다.</span>
     )}

@@ -1,9 +1,7 @@
-*{
+
+.login{
     margin: 0;
     padding: 0;
-}
-/*Todo 이부분 수정안하면 피자 css 날아감*/
-.login{
     display: flex;
     
     flex-direction: column;
