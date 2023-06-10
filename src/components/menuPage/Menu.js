@@ -58,11 +58,11 @@ function Posts() {
 
   if (kategorie === 1) {
     sortedPosts = sortedPosts.sort((a, b) => {
-      const dateA = new Date(a.update.split('T')[0]);
-      const dateB = new Date(b.update.split('T')[0]);
+      const dateA = new Date(a.update);
+      const dateB = new Date(b.update);
       return dateB - dateA;
     });
-  } else if (kategorie === 2) {
+  }else if (kategorie === 2) {
     sortedPosts = sortedPosts.sort((a, b) => parseInt(a.large) - parseInt(b.large));
   } else if (kategorie === 3) {
     sortedPosts = sortedPosts.sort((a, b) => parseInt(b.large) - parseInt(a.large));
@@ -177,7 +177,7 @@ function Posts() {
                         : post.category === selectedCategory
                 )
                 .slice(offset, offset + limit)
-                .map(({ _id, img, title, tag, large, update, category, regular, metarial }) => (
+                .map(({ _id, img, title, tag, large, update, category, regular, metarial, count }) => (
                     <div className="pizzaMenu" key={_id}>
                       <img src={img} width="320px" height="240px" alt="피자 이미지"></img>
                       <div className="explane">
@@ -198,12 +198,12 @@ function Posts() {
                       <div className="link">
                         <div className="goto" >
 
-                          <div className="info" onClick={() => handleDetailClick({ _id, img, title, tag, large, update, category, regular, metarial })}>
+                          <div className="info" onClick={() => handleDetailClick({ _id, img, title, tag, large, update, category, regular, metarial, count })}>
                             <img src="img/돋보기.png"
                               alt="상세보기"></img>상세보기
                           </div>
 
-                          <div className="cart" onClick={() => handleCartClick({_id, img, title, tag, large, update, category, regular, metarial })}>
+                          <div className="cart" onClick={() => handleCartClick({_id, img, title, tag, large, update, category, regular, metarial, count })}>
                             <img src="img/장바구니.png"
                                  alt="장바구니"></img>장바구니
                           </div>

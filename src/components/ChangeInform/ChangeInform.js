@@ -15,18 +15,18 @@ function ChangeInform() {
   const [addres, setaddres] = useState();
   const [detailadd, setdetail] = useState();
   const [data, setdata] = useState({});
-  const [leftEmail, setleftEmail] = useState('');
-  const [rigEmail, setrigEmail] = useState('');
+  const [leftEmail, setleftEmail] = useState("");
+  const [rigEmail, setrigEmail] = useState("");
   //   let data = {};
 
-  const PhoneNumberParser = (phoneNumber) => {
-  
-    const parsedNumber = phoneNumber.split('-');
-  
-    const countryCode = parsedNumber[0];
-    const parsedPhoneNumber = parsedNumber[1] + parsedNumber[2];
-    setrigphone(1*(parsedNumber[1] + parsedNumber[2]))
-  }
+  const PhoneNumberParser = () => {
+    if (phone) {
+      const parsedNumber = phone.split("-");
+      const countryCode = parsedNumber[0];
+      const phoneNumberDigits = parsedNumber[1] + parsedNumber[2];
+      setrigphone(Number(phoneNumberDigits));
+    }
+  };
 
   const handlepwChange = (e) => {
     setpw(e.target.value);
@@ -79,38 +79,39 @@ function ChangeInform() {
         console.error("Error sending data:", error);
       });
   };
-  const parseEmail = (email) => {
-    const atIndex = email.indexOf("@");
-    setleftEmail(email.substring(0, atIndex))
+  const parseEmail = () => {
+    if (email) {
+      const atIndex = email.indexOf("@");
+      setleftEmail(email.substring(0, atIndex));
+    }
   };
 
-    // useEffect(() => {
-    //   axios
-    //     .get("/json/user.json", { id: "bb" })
-    //     .then((response) => {
-          
+  // useEffect(() => {
+  //   axios
+  //     .get("/json/user.json", { id: "bb" })
+  //     .then((response) => {
 
-    //       console.log(response.data);
-    //       let data1 = response.data[0]
-    //       console.log(data1)
-    //       setName(data1.name);
-    //       setId(data1.id);
-    //       setpw(data1.pw);
-    //       setphone(data1.phone);
-          
-    //       setemail(data1.email)
-          
-    //       setbirth(data1.birth);
-    //       setaddres(data1.address);
-    //       setdetail(data1.detailAddress);
-    //       PhoneNumberParser(phone)
-    //       parseEmail(email)
-    //       console.log(email)
-    //     })
-    //     .catch((error) => {
-    //       console.error();
-    //     });
-    // }, []);
+  //       console.log(response.data);
+  //       let data1 = response.data[0]
+  //       console.log(data1)
+  //       setName(data1.name);
+  //       setId(data1.id);
+  //       setpw(data1.pw);
+  //       setphone(data1.phone);
+
+  //       setemail(data1.email)
+
+  //       setbirth(data1.birth);
+  //       setaddres(data1.address);
+  //       setdetail(data1.detailAddress);
+  //       PhoneNumberParser(phone)
+  //       parseEmail(email)
+  //       console.log(email)
+  //     })
+  //     .catch((error) => {
+  //       console.error();
+  //     });
+  // }, []);
 
   useEffect(() => {
     axios
@@ -129,13 +130,24 @@ function ChangeInform() {
         setbirth(userData.birth);
         setaddres(userData.address);
         setdetail(userData.detailAddress);
-        PhoneNumberParser(phone)
-        parseEmail(email)
+        setemail(userData.email);
+        PhoneNumberParser(phone);
+        parseEmail(email);
+
+        console.log(phone);
+        console.log(rigphone);
+        console.log(email);
+        console.log(rigEmail);
       })
       .catch((error) => {
         console.log(error);
       });
   }, []);
+
+  useEffect(() => {
+    PhoneNumberParser();
+    parseEmail();
+  }, [phone, email]);
 
   console.log(data);
   return (
@@ -166,7 +178,7 @@ function ChangeInform() {
             value={pw}
             onChange={handlepwChange}
           ></input>
-        {/*  Todo 비밀번호를 입력하면 일반주소도 같이 입력됨*/}
+          {/*  Todo 비밀번호를 입력하면 일반주소도 같이 입력됨*/}
         </div>
         <div className="inputbox">
           <input
@@ -183,7 +195,12 @@ function ChangeInform() {
             <option className="017">017</option>
             <option className="019">019</option>
           </select>
-          <input className="rightnum" type="number" value={rigphone} disabled></input>
+          <input
+            className="rightnum"
+            type="number"
+            value={rigphone}
+            disabled
+          ></input>
           <span className="phonbtn">수정</span>
         </div>
         <div className="informbox">
@@ -194,9 +211,15 @@ function ChangeInform() {
               type="text"
               value={leftEmail}
               onChange={handleemailChange}
+              disabled
             ></input>
             @
-            <select className="rightemail" onChange={handlerigEChange} value={rigEmail}>
+            <select
+              className="rightemail"
+              onChange={handlerigEChange}
+              value={rigEmail}
+              disabled
+            >
               <option>naver.com</option>
               <option>daum.net</option>
               <option>hotmaile.com</option>
