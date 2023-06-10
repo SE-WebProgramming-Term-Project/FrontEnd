@@ -1,6 +1,7 @@
 .admin-page-menuregist .admin-page-menuregist-container .info-container {
     margin: 70px 0 120px;
     padding: 0 270px;
+    text-align: center;
 }
 
 .admin-page-menuregist .admin-page-menuregist-container .info-container .alvolo-input {
@@ -13,9 +14,10 @@
     padding: 15px 10px;
     border: 0;
     border-bottom: 1px solid #ddd;
-    width: 100%;
+    width: 1200px;
     height: 50px;
     outline: none;
+    margin: 0 auto;
 }
 
 .admin-page-menuregist .admin-page-menuregist-container .info-container .alvolo-input .focus {
@@ -24,7 +26,7 @@
 
 .admin-page-menuregist .admin-page-menuregist-container .info-container .alvolo-input select {
     margin-top: 20px;
-    width: 100%;
+    width: 1200px;
 }
 
 .admin-page-menuregist .admin-page-menuregist-container .info-container .file-upload {
@@ -37,9 +39,22 @@
     padding: 15px 10px;
     border: 0;
     border-bottom: 1px solid #ddd;
-    width: 100%;
+    width: 1200px;
     height: 50px;
     outline: none;
+}
+
+.admin-page-menuregist .admin-page-menuregist-container .info-container .file-upload-btn {
+    display: block;
+    position: absolute;
+    left: 1300px;
+    width: 150px;
+    line-height: 64px;
+    top: 110px;
+    background-color: #ccc;
+    color: black;
+    font-weight: bold;
+    text-align: center;
 }
 
 .admin-page-menuregist .admin-page-menuregist-container .info-container .file-upload input[type="file"] {

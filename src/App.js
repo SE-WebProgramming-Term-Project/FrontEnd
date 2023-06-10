@@ -8,6 +8,9 @@ import UserMypage from "./components/UserMypage/UserMypage";
 import Orderhistory from "./components/Orderhistory/Orderhistory";
 import ChangeInform from "./components/ChangeInform/ChangeInform";
 import Login from "./components/Login/Login";
+import AdminPageMenuRegist from "./components/AdminMypage/AdminPageMenuRegist";
+import AdminMyPage from "./components/AdminMypage/AdminMyPage";
+import AdminPageAnalysis from "./components/AdminMypage/AdminPageAnalysis";
 function App() {
     return (
         <Routes>
@@ -19,8 +22,11 @@ function App() {
             <Route path="/Orderhistory" element={<Orderhistory />} />
             <Route path="/ChangeInform" element={<ChangeInform />} />
             <Route path="/Login" element= {<Login/>}/>
+            <Route path="/AdminMyPage" element={<AdminMyPage />}/>
+            <Route path="/AdminPageMenuRegist" element={<AdminPageMenuRegist />} />
+            <Route path="/AdminPageAnalysis" element={<AdminPageAnalysis />} />
         </Routes>
-    );
+);
 }
 
 

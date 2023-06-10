@@ -48,12 +48,17 @@ function Nav() {
     const handleChangeInform = () =>{
         navigate("/ChangeInform")
     }
-
+    
+    const handleAdminMyPage = () => {
+        navigate("/AdminMyPage")
+    }
+    /* Todo 임시로 넣은거임 */
+    
   return (
     <div id='sjNavHeader'>
       <div className='wrapNav'>
             <div className = 'navLeft'>
-                <img className='btn' onClick ={()=>toggleMenu()} src ="./img/sidebutton.png"  />
+                <img className='nav_btn' onClick ={()=>toggleMenu()} src ="./img/sidebutton.png"  />
                 <img className='logo' src ="./img/logo.png" onClick={() => handleMainClick()}/>
             </div>
             <div className = 'navMid'>
@@ -68,7 +73,8 @@ function Nav() {
             <div className = 'navRight'>
               <div className='RigTextBox'>
                 <span className='rightText' onClick={() => handlUserMyPageClick()}>마이페이지</span>
-                <span className='rightText'>회원가입</span>
+                <span className='rightText' onClick={() => handleAdminMyPage()}>회원가입</span>
+                {/*  Todo 임시로 회원가입시 점주페이지로 가도록 함*/}
                 {localStorage.getItem("id") ==null ?
                 <span className='rightText' onClick={() => handleLoginClick()}>로그인</span>:
                 <span className='rightText' onClick={() => handleLogoutClick()}>로그아웃</span>
@@ -104,7 +110,7 @@ function Nav() {
                 </div>
                 <div className='wrapTabItem'>
                 <div class="tabTitle" onClick={() => handlUserMyPageClick()}>마이페이지</div>
-                <div class="tabItem" onClick={() => handleOrderHistoryClick()}>주문내역</div>
+                <div class="tabItem" onClick={() => handleOrderHistoryClick()}>주문내역</div> {/*    Todo 이부분이 제대로 동작하지 않음*/}
                 <div class="tabItem">쿠폰함</div>
                 <div class="tabItem">MY CLASS</div>
                 <div class="tabItem">비행기스탬프</div>

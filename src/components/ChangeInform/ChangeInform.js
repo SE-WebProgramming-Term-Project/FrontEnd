@@ -166,6 +166,7 @@ function ChangeInform() {
             value={pw}
             onChange={handlepwChange}
           ></input>
+        {/*  Todo 비밀번호를 입력하면 일반주소도 같이 입력됨*/}
         </div>
         <div className="inputbox">
           <input
