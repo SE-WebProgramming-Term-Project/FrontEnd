@@ -11,6 +11,7 @@ function Orderhistory() {
   const [data, setData] = useState([]);
   const [menuname, setMenuname] = useState([]);
   const [selectedOrder, setSelectedOrder] = useState(null);
+  const [isReviewed, setIsReviewed] = useState(false); // 추가된 상태
 
   useEffect(() => {
     const fetchData = async () => {
@@ -29,30 +30,33 @@ function Orderhistory() {
   }, []);
 
   useEffect(() => {
-    const fetchMenuNames = async () => {
-      const names = await Promise.all(
-        data.map((i) =>
-          Promise.all(
-            i.orderMenu.map((menuId) =>
-              axios
-                .get("http://localhost:5000/pizza/view", {
-                  params: { _id: menuId },
-                })
-                .then((response) => response.data.pizzaData.title)
-                .catch((error) => {
-                  console.log(error);
-                  return "";
-                })
+    if(data != undefined){
+      const fetchMenuNames = async () => {
+        const names = await Promise.all(
+          data.map((i) =>
+            Promise.all(
+              i.orderMenu.map((menuId) =>
+                axios
+                  .get("http://localhost:5000/pizza/view", {
+                    params: { _id: menuId },
+                  })
+                  .then((response) => response.data.pizzaData.title)
+                  .catch((error) => {
+                    console.log(error);
+                    return "";
+                  })
+              )
             )
           )
-        )
-      );
-
-      const menuTitles = names.map((menuArr) => menuArr.join(" "));
-      setMenuname(menuTitles);
-    };
-
-    fetchMenuNames();
+        );
+  
+        const menuTitles = names.map((menuArr) => menuArr.join(" "));
+        setMenuname(menuTitles);
+      };
+  
+      fetchMenuNames();
+    }
+    
   }, [data]);
 
   const handleReviewClick = (order) => {
@@ -61,13 +65,14 @@ function Orderhistory() {
 
   const handleReviewClose = () => {
     setSelectedOrder(null);
+    setIsReviewed(true); // 리뷰가 작성되면 상태를 업데이트
   };
 
   return (
     <div className="Ordercontainer">
-      <UserMypage />
-      {console.log(data.length)}
-      {data && data.length > 0 ? (
+      <UserMypage /> {/* UserMypage 컴포넌트에 상태 전달 */}
+      
+      {data != undefined && data.length > 0 ? (
         data.map((i, index) => (
           <div className="Orderinforcontainer" key={i.id}>
             <div className="inform">

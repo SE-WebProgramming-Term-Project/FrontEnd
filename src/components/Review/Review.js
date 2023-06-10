@@ -32,11 +32,10 @@ const Review = (props) => {
   };
 
   const sendReview = () => {
-    const reviews = props.data.orderMenu.map((id) => ({
-      id: 4,
+    const reviews = props.order.orderMenu.map((id) => ({
       score: rating,
       evaluation: txt,
-      author: props.data.id,
+      author: props.order.id,
       pizzaId: id,
     }));
     console.log(reviews)

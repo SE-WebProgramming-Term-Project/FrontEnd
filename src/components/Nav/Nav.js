@@ -27,7 +27,10 @@ function Nav() {
       localStorage.removeItem('id')
     }
     const handlUserMyPageClick = () =>{
-        navigate("/UserMypage");
+      localStorage.getItem("id")!= null ? 
+      navigate("/UserMypage"):
+      navigate("/Login")
+        
     }
     
     const handleOrderHistoryClick = () => {
@@ -37,7 +40,10 @@ function Nav() {
       
         }
     const handleChangeInform = () =>{
-        navigate("/ChangeInform")
+      localStorage.getItem("id")!= null ? 
+      navigate("/ChangeInform"):
+      navigate("/Login")
+      
     }
     
     const handleAdminMyPage = () => {
