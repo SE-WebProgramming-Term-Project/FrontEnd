@@ -1,6 +1,31 @@
-import { useState } from "react";
-import "./css/Review.css";
-import axios from "axios";
+import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
+import './css/Review.css';
+import axios from 'axios';
+
+const StarRating = () => {
+  const [rating, setRating] = useState(0);
+
+  const handleRating = (value) => {
+    setRating(value);
+  };
+
+  return (
+    <div className="starcon">
+      {[1, 2, 3, 4, 5].map((value) => (
+        <FontAwesomeIcon
+          key={value}
+          icon={faStar}
+          className={`star ${value <= rating ? 'active' : ''}`}
+          onClick={() => handleRating(value)}
+        />
+      ))}
+    </div>
+  );
+};
+
+
 const Review = (props) => {
   const [number, setNum] = useState();
   const [txt, setTxt] = useState();
@@ -69,14 +94,12 @@ const Review = (props) => {
 
   return (
     <div className="reviewcontainer">
-      <div className="starcon">
-        <input className="star" type="number" onChange={handlenum}></input>
-      </div>
+      <StarRating />
       <div className="textcon">
         <textarea className="reviewText" onChange={handletxt}></textarea>
       </div>
       <div className="btncon">
-        <input className="submitbtn" type="submit" onClick={sendReview}></input>
+        <input className="submitbtn" type="submit" onClick={sendReview} />
       </div>
     </div>
   );

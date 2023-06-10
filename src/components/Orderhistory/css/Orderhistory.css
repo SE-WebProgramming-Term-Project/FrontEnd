@@ -1,14 +1,32 @@
-.Orderinforcontainer{
+.Ordercontainer {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-.inform{
+  }
+  
+  .Orderinforcontainer {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .inform {
     display: flex;
     justify-content: space-between;
-    width: 500px;
-    margin: 15px;
-}
-.title{
-    width: 150px;
-}
+    margin-bottom: 5px;
+  }
+  
+  .title {
+    font-weight: bold;
+  }
+  
+  .inner {
+    color: #333;
+  }
+  
+  span {
+    color: #999;
+  }
+  
+  
