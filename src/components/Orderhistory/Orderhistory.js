@@ -8,8 +8,7 @@ import Nav from "../Nav/Nav";
 import UserMypage from "../UserMypage/UserMypage";
 
 function Orderhistory() {
-  const location = useLocation();
-  const data = location.state;
+  let data = []
   const [menuname, setMenuname] = useState([]);
 
   // useEffect(() => {
@@ -34,7 +33,30 @@ function Orderhistory() {
 
   //   fetchMenuNames();
   // }, []);
+  useEffect(()=>{
+    let idx =0
+    axios
+    .get("http://localhost:5000/order/view", {
+      params: { id: localStorage.getItem("id") },
+    })
+    .then((response) => {
+      console.log(localStorage.getItem("id"));
+      
+      console.log(response.data);
+      const orders = response.data.orderData;
 
+      orders.forEach((order) => {
+        data[idx] = order;
+        idx++;
+      });
+      
+     
+    })
+    .catch((error) => {
+      console.error(error);
+    });},[data])
+
+  
   useEffect(() => {
     const fetchMenuNames = async () => {
       const names = await Promise.all(
@@ -68,7 +90,7 @@ function Orderhistory() {
     <div className="Ordercontainer">
       <UserMypage />
       {console.log(data.length)}
-      {data.length > 0 ? (
+      {data &&data.length > 0 ? (
         data.map((i, index) => (
           <div className="Orderinforcontainer" key={i.id}>
             <div className="inform">
@@ -91,7 +113,7 @@ function Orderhistory() {
               <div className="title">주문매장</div>
               <div className="inner">{i.store}</div>
             </div>
-            <Review data={i} />
+              {i.isReviewed ? '':<Review data={i}/>}
           </div>
         ))
       ) : (
