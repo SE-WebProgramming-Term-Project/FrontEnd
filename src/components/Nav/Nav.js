@@ -27,8 +27,11 @@ function Nav() {
     }
     
     const handleOrderHistoryClick = () => {
-      navigate("/OrderHistory");
-      }
+      localStorage.getItem("id") ? 
+      navigate("/OrderHistory"):
+      navigate("/")
+      
+        }
     const handleChangeInform = () =>{
         navigate("/ChangeInform")
     }

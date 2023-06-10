@@ -8,55 +8,26 @@ import Nav from "../Nav/Nav";
 import UserMypage from "../UserMypage/UserMypage";
 
 function Orderhistory() {
-  let data = []
+  const [data, setData] = useState([]);
   const [menuname, setMenuname] = useState([]);
+  const [selectedOrder, setSelectedOrder] = useState(null);
 
-  // useEffect(() => {
-  //   const fetchMenuNames = async () => {
-  //     console.log(data)
-  //     const names = await Promise.all(
-  //       data.map((i) =>
-  //         axios
-  //           .get("http://localhost:5000/pizza/view", {
-  //             params: { _id: { $in: i.orderMenu } },
-  //           })
-  //           .then(
-  //             (response) => response.data.pizzaData.title)
-  //           .catch((error) => {
-  //             console.log(error);
-  //             return "";
-  //           })
-  //       )
-  //     );
-  //     setMenuname(names);
-  //   };
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:5000/order/view", {
+          params: { id: localStorage.getItem("id") },
+        });
+        const orders = response.data.orderData;
+        setData(orders);
+      } catch (error) {
+        console.error(error);
+      }
+    };
 
-  //   fetchMenuNames();
-  // }, []);
-  useEffect(()=>{
-    let idx =0
-    axios
-    .get("http://localhost:5000/order/view", {
-      params: { id: localStorage.getItem("id") },
-    })
-    .then((response) => {
-      console.log(localStorage.getItem("id"));
-      
-      console.log(response.data);
-      const orders = response.data.orderData;
+    fetchData();
+  }, []);
 
-      orders.forEach((order) => {
-        data[idx] = order;
-        idx++;
-      });
-      
-     
-    })
-    .catch((error) => {
-      console.error(error);
-    });},[data])
-
-  
   useEffect(() => {
     const fetchMenuNames = async () => {
       const names = await Promise.all(
@@ -76,21 +47,27 @@ function Orderhistory() {
           )
         )
       );
-  
+
       const menuTitles = names.map((menuArr) => menuArr.join(" "));
       setMenuname(menuTitles);
     };
-  
-    fetchMenuNames();
 
-    console.log(menuname);
-  }, []);
+    fetchMenuNames();
+  }, [data]);
+
+  const handleReviewClick = (order) => {
+    setSelectedOrder(order);
+  };
+
+  const handleReviewClose = () => {
+    setSelectedOrder(null);
+  };
 
   return (
     <div className="Ordercontainer">
       <UserMypage />
       {console.log(data.length)}
-      {data &&data.length > 0 ? (
+      {data && data.length > 0 ? (
         data.map((i, index) => (
           <div className="Orderinforcontainer" key={i.id}>
             <div className="inform">
@@ -113,11 +90,16 @@ function Orderhistory() {
               <div className="title">주문매장</div>
               <div className="inner">{i.store}</div>
             </div>
-              {i.isReviewed ? '':<Review data={i}/>}
+            {!i.isReviewed && (
+              <div onClick={() => handleReviewClick(i)}>리뷰 입력</div>
+            )}
           </div>
         ))
       ) : (
         <span>주문내역이 없습니다.</span>
+      )}
+      {selectedOrder && (
+        <Review order={selectedOrder} onClose={handleReviewClose} />
       )}
     </div>
   );
