@@ -50,11 +50,6 @@ function Nav() {
       navigate("/Login")
     }
     
-    const handleAdminMyPage = () => {
-        navigate("/AdminMyPage")
-    }
-    /* Todo 임시로 넣은거임 */
-    
   return (
     <div id='sjNavHeader'>
       <div className='wrapNav'>
@@ -74,8 +69,7 @@ function Nav() {
             <div className = 'navRight'>
               <div className='RigTextBox'>
                 <span className='rightText' onClick={() => handlUserMyPageClick()}>마이페이지</span>
-                <span className='rightText' onClick={() => handleAdminMyPage()}>회원가입</span>
-                {/*  Todo 임시로 회원가입시 점주페이지로 가도록 함*/}
+                <span className='rightText'>회원가입</span>
                 {localStorage.getItem("id") ==null ?
                 <span className='rightText' onClick={() => handleLoginClick()}>로그인</span>:
                 <span className='rightText' onClick={() => handleLogoutClick()}>로그아웃</span>
