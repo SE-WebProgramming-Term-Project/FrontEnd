@@ -25,6 +25,7 @@ function Nav() {
     }
     const handleLogoutClick = () =>{
       localStorage.removeItem('id')
+      navigate("/");
     }
     const handlUserMyPageClick = () =>{
       localStorage.getItem("id")!= null ? 
