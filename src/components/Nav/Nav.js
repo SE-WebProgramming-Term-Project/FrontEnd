@@ -16,6 +16,10 @@ function Nav() {
     const handleMainClick = () =>{
         navigate("/");
     }
+
+    const handleCartClick = () =>{
+        navigate("/Cart")
+    }
     const handleLoginClick = () =>{
       navigate("/Login")
     }
@@ -80,7 +84,7 @@ function Nav() {
                 <span className='rightText' onClick={() => handleLogoutClick()}>로그아웃</span>
                 }
               </div>
-              <div className='RigImgBox'><img className='rigImg' src='./img/p-icon.png'/></div>
+              <div className='RigImgBox' onClick={() => handleCartClick()}><img className='rigImg' src='./img/p-icon.png'/></div>
             </div>
             <div className = {toggle ? "navTab activetoggle" : "navTab"} >
               <div className='tabContent'>
