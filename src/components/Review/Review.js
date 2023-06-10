@@ -76,7 +76,7 @@ const Review = (props) => {
   
     const reviews = props.data.orderMenu.map((id) => ({
       id: 4,
-      score: number,
+      score: rating,
       evaluation: txt,
       author: props.data.id,
       pizzaId: id,

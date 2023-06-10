@@ -14,35 +14,15 @@ function Login() {
     setpw(e.target.value);
   };
 
-  // const sendLogin = () => {
-  //   axios
-  //     .get("http://localhost:5000/user/login", {
-  //       params: { id: id },
-  //     })
-  //     .then((response) => {
-  //       console.log(response.data);
-
-  //       if (pw === response.data.pw) {
-  //         console.log("로그인 성공");
-  //         localStorage.setItem("id", id);
-  //       } else {
-  //         alert("로그인 실패!");
-  //       }
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
-
   const sendLogin = () => {
     axios
-      .get("/json/user.json", {
+      .get("http://localhost:5000/user/login", {
         params: { id: id },
       })
       .then((response) => {
         console.log(response.data);
 
-        if (pw === response.data[0].pw) {
+        if (pw === response.data.pw) {
           console.log("로그인 성공");
           localStorage.setItem("id", id);
         } else {
@@ -53,6 +33,26 @@ function Login() {
         console.log(err);
       });
   };
+
+  // const sendLogin = () => {
+  //   axios
+  //     .get("/json/user.json", {
+  //       params: { id: id },
+  //     })
+  //     .then((response) => {
+  //       console.log(response.data);
+
+  //       if (pw === response.data[0].pw) {
+  //         console.log("로그인 성공");
+  //         localStorage.setItem("id", id);
+  //       } else {
+  //         alert("로그인 실패!");
+  //       }
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
 
   return (
     <div className="login">

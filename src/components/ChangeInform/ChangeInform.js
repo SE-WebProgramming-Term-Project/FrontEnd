@@ -16,6 +16,7 @@ function ChangeInform() {
   const [detailadd, setdetail] = useState();
   const [data, setdata] = useState({});
   const [leftEmail, setleftEmail] = useState('');
+  const [rigEmail, setrigEmail] = useState('');
   //   let data = {};
 
   const PhoneNumberParser = (phoneNumber) => {
@@ -30,12 +31,14 @@ function ChangeInform() {
   const handlepwChange = (e) => {
     setpw(e.target.value);
   };
+  const handlerigEChange = (e) => {
+    setrigEmail(e.target.value);
+  };
   const handlephoneChange = (e) => {
     setphone(e.target.value);
   };
   const handleemailChange = (e) => {
     setleftEmail(e.target.value);
-    parseEmail(e.target.value);
   };
   const handleaddresChange = (e) => {
     setaddres(e.target.value);
@@ -81,56 +84,58 @@ function ChangeInform() {
     setleftEmail(email.substring(0, atIndex))
   };
 
-    useEffect(() => {
-      axios
-        .get("/json/user.json", { id: "bb" })
-        .then((response) => {
+    // useEffect(() => {
+    //   axios
+    //     .get("/json/user.json", { id: "bb" })
+    //     .then((response) => {
           
 
-          console.log(response.data);
-          let data1 = response.data[0]
-          console.log(data1)
-          setName(data1.name);
-          setId(data1.id);
-          setpw(data1.pw);
-          setphone(data1.phone);
+    //       console.log(response.data);
+    //       let data1 = response.data[0]
+    //       console.log(data1)
+    //       setName(data1.name);
+    //       setId(data1.id);
+    //       setpw(data1.pw);
+    //       setphone(data1.phone);
           
-          setemail(data1.email)
+    //       setemail(data1.email)
           
-          setbirth(data1.birth);
-          setaddres(data1.address);
-          setdetail(data1.detailAddress);
-          PhoneNumberParser(phone)
-          parseEmail(email)
-          console.log(email)
-        })
-        .catch((error) => {
-          console.error();
-        });
-    }, []);
+    //       setbirth(data1.birth);
+    //       setaddres(data1.address);
+    //       setdetail(data1.detailAddress);
+    //       PhoneNumberParser(phone)
+    //       parseEmail(email)
+    //       console.log(email)
+    //     })
+    //     .catch((error) => {
+    //       console.error();
+    //     });
+    // }, []);
 
-  // useEffect(() => {
-  //   axios
-  //     .get("http://localhost:5000/user/view", {
-  //       params: { id: localStorage.getItem("id") },
-  //     })
-  //     .then((response) => {
-  //       const userData = response.data.userData;
-  //       setdata(userData);
-  //       console.log(response);
-  //       console.log(data);
-  //       setName(userData.name);
-  //       setId(userData.id);
-  //       setpw(userData.pw);
-  //       setphone(userData.phone);
-  //       setbirth(userData.birth);
-  //       setaddres(userData.address);
-  //       setdetail(userData.detailAddress);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }, []);
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/user/view", {
+        params: { id: localStorage.getItem("id") },
+      })
+      .then((response) => {
+        const userData = response.data.userData;
+        setdata(userData);
+        console.log(response);
+        console.log(data);
+        setName(userData.name);
+        setId(userData.id);
+        setpw(userData.pw);
+        setphone(userData.phone);
+        setbirth(userData.birth);
+        setaddres(userData.address);
+        setdetail(userData.detailAddress);
+        PhoneNumberParser(phone)
+        parseEmail(email)
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   console.log(data);
   return (
@@ -190,7 +195,7 @@ function ChangeInform() {
               onChange={handleemailChange}
             ></input>
             @
-            <select className="rightemail">
+            <select className="rightemail" onChange={handlerigEChange} value={rigEmail}>
               <option>naver.com</option>
               <option>daum.net</option>
               <option>hotmaile.com</option>

@@ -30,7 +30,7 @@ function Nav() {
       let data = []
     let idx =0
       axios
-        .get("/json/order.json", { id: "bb" })
+        .get("http://localhost:5000/order/view", { id: "bb" })
         .then((response) => {
           const orders = response.data;
     
