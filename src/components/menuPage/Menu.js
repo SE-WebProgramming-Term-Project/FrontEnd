@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import Pagination from "./MenuPazination";
 import Menu_header from "./Menu_header";
@@ -10,7 +11,7 @@ function Posts() {
   const [originalPosts, setOriginalPosts] = useState([]);
   const [limit, setLimit] = useState(2);
   const [page, setPage] = useState(1);
-  const [kategorie, setKategorie] = useState(0);
+  const [kategorie, setKategorie] = useState(1);
   const [selectedCategory, setSelectedCategory] = useState("전체");
   const [totalPosts, setTotalPosts] = useState(0);
   const offset = (page - 1) * limit;
@@ -23,17 +24,11 @@ function Posts() {
     navigate("/detail", { state: { pizzaInfo } });
   };
 
-  const handleGoToCart = () => {
-    const items = Array.isArray(cartItems) ? [...cartItems] : [];
-    navigate("/cart", { state: { cartItems: items } });
-  };
-
-
   const handleCartClick = (pizza) => {
     alert("장바구니에 추가하였습니다.");
     const updatedCartItems = Array.isArray(cartItems) ? [...cartItems, pizza] : [pizza];
     setCartItems(updatedCartItems);
-    location.state = updatedCartItems; // Update location.state with new cart items
+    localStorage.setItem("cart",JSON.stringify(cartItems));
   };
 
   useEffect(() => {
@@ -80,16 +75,6 @@ function Posts() {
     setPage(1);
   }, [selectedCategory]);
 
-  useEffect(() => {
-    const state = location.state;
-    console.log(state);
-
-
-      setCartItems(state);
-
-    console.log(cartItems);
-
-  }, [location.state]);
   const handleCategoryClick = (category) => {
     setSelectedCategory(category);
     setPosts(originalPosts);
@@ -226,7 +211,7 @@ function Posts() {
               kategorie={kategorie}
               setPage={setPage}
           />
-          <button onClick={handleGoToCart}>장바구니로 이동</button>
+
         </footer>
       </div>
   );

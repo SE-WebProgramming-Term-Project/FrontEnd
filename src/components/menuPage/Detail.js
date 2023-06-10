@@ -6,6 +6,7 @@ import "./css/Menu_header.css";
 import Nav from "../Nav/Nav";
 import MenuPazination from "./MenuPazination";
 import axios from "axios";
+
 function Detail() {
     const location = useLocation();
     const pizzaInfo = location.state.pizzaInfo;
@@ -17,13 +18,13 @@ function Detail() {
 
     useEffect(() => {
         axios
-        .get("http://localhost:5000/review/view", {
-            params: { pizzaId: pizzaInfo._id },
-          }) // Adjust the path according to your file location
+            .get("http://localhost:5000/review/view", {
+                params: { pizzaId: pizzaInfo._id },
+            })
             .then((response) => {
                 const { reviewData } = response.data;
-        setDetail(reviewData);
-         console.log(detail);
+                setDetail(reviewData);
+                console.log(detail);
             })
             .catch((error) => {
                 console.log(error);
@@ -60,23 +61,21 @@ function Detail() {
                     </thead>
                     <tbody>
                     {/* Render the reviews */}
-                    {detail
-                        .slice(offset, offset + limit)
-                        .map(({ _id, score, evaluation, author }) => (
-                            <tr key={_id}>
-                                <td>{score}</td>
-                                <td>{evaluation}</td>
-                                <td>{author}</td>
-                            </tr>
-                        ))}
+                    {detail.length > 0 ? (
+                        detail
+                            .slice(offset, offset + limit)
+                            .map(({ _id, score, evaluation, author }) => (
+                                <tr key={_id}>
+                                    <td>{score}</td>
+                                    <td>{evaluation}</td>
+                                    <td>{author}</td>
+                                </tr>
+                            ))
+                    ) : (
+                    )}
                     </tbody>
                 </table>
-                <MenuPazination
-                    total={detail.length}
-                    limit={limit}
-                    page={page}
-                    setPage={setPage}
-                />
+                <MenuPazination total={detail.length} limit={limit} page={page} setPage={setPage} />
             </footer>
         </div>
     );
