@@ -36,10 +36,10 @@ function Posts() {
   };
 
   useEffect(() => {
-    axios.get("/json/data.json").then((response) => {
-      setPosts(response.data);
-      setOriginalPosts(response.data);
-      setTotalPosts(response.data.length);
+    axios.get("http://localhost:5000/pizza/findAll").then((response) => {
+      setPosts(response.data.pizzaData);
+      setOriginalPosts(response.data.pizzaData);
+      setTotalPosts(response.data.pizzaData.length);
     });
   }, []);
 
@@ -181,9 +181,9 @@ function Posts() {
                         : post.category === selectedCategory
                 )
                 .slice(offset, offset + limit)
-                .map(({ id, img, title, tag, large, update, category, reguler, metarial }) => (
+                .map(({ id, img, title, tag, large, update, category, regular, metarial }) => (
                     <div className="pizzaMenu" key={id}>
-                      <img src={img} alt="피자 이미지"></img>
+                      <img src={img} width="320px" height="240px" alt="피자 이미지"></img>
                       <div className="explane">
                         <h3>{title}</h3>
                         <h6>{tag}</h6>
@@ -191,7 +191,7 @@ function Posts() {
                           <h5 className="large">L</h5>
                           <h5 className="cost">{large}</h5>
                           <h5 className="large">R</h5>
-                          <h5 className="cost">{large}</h5>
+                          <h5 className="cost">{regular}</h5>
                         </div>
                         <div className="metarials">
                           {metarial.map((item, index) => (
@@ -202,12 +202,12 @@ function Posts() {
                       <div className="link">
                         <div className="goto" >
 
-                          <div className="info" onClick={() => handleDetailClick({ id, img, title, tag, large, update, category, reguler, metarial })}>
+                          <div className="info" onClick={() => handleDetailClick({ id, img, title, tag, large, update, category, regular, metarial })}>
                             <img src="img/돋보기.png"
                               alt="상세보기"></img>상세보기
                           </div>
 
-                          <div className="cart" onClick={() => handleCartClick({ id, img, title, tag, large, update, category, reguler, metarial })}>
+                          <div className="cart" onClick={() => handleCartClick({ id, img, title, tag, large, update, category, regular, metarial })}>
                             <img src="img/장바구니.png"
                                  alt="장바구니"></img>장바구니
                           </div>
