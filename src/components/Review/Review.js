@@ -4,12 +4,16 @@ import { faStar } from '@fortawesome/free-solid-svg-icons';
 import './css/Review.css';
 import axios from 'axios';
 
+
+let menuname = []
+let idx = 0
 const StarRating = () => {
   const [rating, setRating] = useState(0);
 
   const handleRating = (value) => {
     setRating(value);
   };
+
 
   return (
     <div className="starcon">
@@ -27,7 +31,7 @@ const StarRating = () => {
 
 
 const Review = (props) => {
-  const [number, setNum] = useState();
+  const [rating, setNum] = useState();
   const [txt, setTxt] = useState();
 
   const handlenum = (e) => {
@@ -70,6 +74,21 @@ const Review = (props) => {
   //     })
   //     .catch((error) => {});
   // };
+  useEffect(() => {
+    props.data.map((i)=>{axios
+      .get("http://localhost:5000/user/view", {
+        params: { id : {$in: i.orderMenu }
+      }})
+      .then((response) => {
+        menuname[idx]+=response.data.title+" "
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      idx++
+    })
+    
+  }, [])
 
   const sendReview = () => {
     console.log(props);
@@ -103,6 +122,7 @@ const Review = (props) => {
       </div>
     </div>
   );
-};
+}
+
 
 export default Review;
