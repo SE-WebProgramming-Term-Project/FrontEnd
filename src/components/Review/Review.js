@@ -48,6 +48,17 @@ const Review = (props) => {
       .catch((error) => {
         console.log(error);
       });
+      props.data.isReviewed = true;
+      console.log(props.data);
+
+      axios
+      .post('http://localhost:5000/order/update', props.data)
+      .then((response) => {
+        console.log('Data sent successfully!', response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
