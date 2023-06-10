@@ -28,23 +28,26 @@ function Nav() {
       navigate("/");
     }
     const handlUserMyPageClick = () =>{
-      localStorage.getItem("id")!= null ? 
-      navigate("/UserMypage"):
+      localStorage.getItem("id")!= null ?
+      localStorage.getItem("sjtype") == 1 ?   navigate("/AdminMyPage") : navigate("/UserMypage") 
+      :
       navigate("/Login")
         
     }
     
     const handleOrderHistoryClick = () => {
-      localStorage.getItem("id")!= null ? 
-      navigate("/OrderHistory"):
-      navigate("/Login")
       
+      localStorage.getItem("id")!= null ?
+      localStorage.getItem("sjtype") == 1 ?   navigate("/AdminMyPage") : navigate("/OrderHistory") 
+      :
+      navigate("/Login")
         }
     const handleChangeInform = () =>{
-      localStorage.getItem("id")!= null ? 
-      navigate("/ChangeInform"):
-      navigate("/Login")
       
+      localStorage.getItem("id")!= null ?
+      localStorage.getItem("sjtype") == 1 ?   navigate("/AdminMyPage") : navigate("/ChangeInform")
+      :
+      navigate("/Login")
     }
     
     const handleAdminMyPage = () => {

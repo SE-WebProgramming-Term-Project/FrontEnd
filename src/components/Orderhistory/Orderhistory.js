@@ -96,7 +96,7 @@ function Orderhistory() {
               <div className="inner">{i.store}</div>
             </div>
             {!i.isReviewed && (
-              <div onClick={() => handleReviewClick(i)}>리뷰 입력</div>
+              <div id="sjreviewbtn" onClick={ () => handleReviewClick(i)}>리뷰 입력</div>
             )}
           </div>
         ))
