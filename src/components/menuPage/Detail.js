@@ -18,11 +18,12 @@ function Detail() {
     useEffect(() => {
         axios
         .get("http://localhost:5000/review/view", {
-            params: { pizzaId: pizzaInfo.id },
+            params: { pizzaId: pizzaInfo._id },
           }) // Adjust the path according to your file location
             .then((response) => {
                 const { reviewData } = response.data;
         setDetail(reviewData);
+         console.log(detail);
             })
             .catch((error) => {
                 console.log(error);
@@ -44,7 +45,7 @@ function Detail() {
                         <h5 className="large">L</h5>
                         <h5 className="cost">{pizzaInfo.large}</h5>
                         <h5 className="large">R</h5>
-                        <h5 className="cost">{pizzaInfo.reguler}</h5>
+                        <h5 className="cost">{pizzaInfo.regular}</h5>
                     </div>
                 </div>
             </main>
@@ -61,8 +62,8 @@ function Detail() {
                     {/* Render the reviews */}
                     {detail
                         .slice(offset, offset + limit)
-                        .map(({ id, score, evaluation, author }) => (
-                            <tr key={id}>
+                        .map(({ _id, score, evaluation, author }) => (
+                            <tr key={_id}>
                                 <td>{score}</td>
                                 <td>{evaluation}</td>
                                 <td>{author}</td>

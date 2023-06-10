@@ -1,67 +1,70 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate, Link } from "react-router-dom";
 import "./css/Cart.css";
-import Nav from"../Nav/Nav"
+import Nav from "../Nav/Nav";
 import axios from "axios";
-import * as PropTypes from "prop-types";
 
 function Cart() {
-    const location = useLocation();
-    const cartItems = location.state && location.state.cartItems ? location.state.cartItems : [];
-    const [counts, setCounts] = useState(cartItems.map(() => 1));
-    const [locationState, setLocationState] = useState(cartItems);
-    const [userData, setUserData] = useState(null); // Added state for user data
-    const navigate = useNavigate();
+  const location = useLocation();
+  const cartItems = location.state && location.state.cartItems ? location.state.cartItems : [];
+  const [counts, setCounts] = useState(cartItems.map(() => 1));
+  const [locationState, setLocationState] = useState(cartItems);
+  const [userData, setUserData] = useState(); // Added state for user data
+  const navigate = useNavigate();
 
-    console.log(location);
-    const handleOrder = () => {
-        const orderMenu = locationState.map((pizza) => pizza._id);
-        const orderData = {
-            orderMenu: orderMenu,
-            id: userData.id,
-            dest: userData.address + " " + userData.detailAddress,
-            totalPrice: calculateTotalPrice(),
-            orderDate: new Date().toString(),
-            store: "대구점"
-        };
-
-        axios.post("http://localhost:5000/order/buy", orderData)
-            .then((response) => {
-                console.log(response.data);
-            })
-            .catch((error) => {
-                console.error(error);
-            });
-
-        navigate("/");
+  console.log(location);
+  const handleOrder = () => {
+    const orderMenu = locationState.map((pizza) => pizza._id);
+    const orderData = {
+      orderMenu: orderMenu,
+      id: userData.id,
+      dest: userData.address + " " + userData.detailAddress,
+      totalPrice: calculateTotalPrice(),
+      orderDate: new Date().toString(),
+      store: "대구점",
     };
 
-    useEffect(() => {
-        const id = localStorage.getItem("id");
-        console.log(id);
-        axios
-            .get("http://localhost:5000/user/view", {
-                params: { id },
-            })
-            .then((response) => {
-                const tmpData = response.data;
+    axios
+      .post("http://localhost:5000/order/buy", orderData)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
 
-                console.log(tmpData);
-                setUserData(tmpData); // Update userData with fetched user data
-            
-                console.log(userData);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    }, []);
-    const handleDecrement = (index) => {
-        if (counts[index] > 1) {
-            const newCounts = [...counts];
-            newCounts[index] -= 1;
-            setCounts(newCounts);
-        }
-    };
+    navigate("/");
+  };
+
+  useEffect(() => {
+    const id = localStorage.getItem("id");
+    console.log(id);
+    axios
+      .get("http://localhost:5000/user/view", {
+        params: { id },
+      })
+      .then((response) => {
+        const tmpData = response.data.userData;
+
+        console.log(tmpData);
+        setUserData(tmpData); // Update userData with fetched user data
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  useEffect(() => {
+    console.log("userData has changed:", userData);
+  }, [userData]);
+
+  const handleDecrement = (index) => {
+    if (counts[index] > 1) {
+      const newCounts = [...counts];
+      newCounts[index] -= 1;
+      setCounts(newCounts);
+    }
+  };
 
     const handleIncrement = (index) => {
         const newCounts = [...counts];

@@ -19,6 +19,7 @@ function Posts() {
   const location = useLocation(); // useLocation 추가
 
   const handleDetailClick = (pizzaInfo) => {
+    console.log(pizzaInfo);
     navigate("/detail", { state: { pizzaInfo } });
   };
 
@@ -181,8 +182,8 @@ function Posts() {
                         : post.category === selectedCategory
                 )
                 .slice(offset, offset + limit)
-                .map(({ id, img, title, tag, large, update, category, regular, metarial }) => (
-                    <div className="pizzaMenu" key={id}>
+                .map(({ _id, img, title, tag, large, update, category, regular, metarial }) => (
+                    <div className="pizzaMenu" key={_id}>
                       <img src={img} width="320px" height="240px" alt="피자 이미지"></img>
                       <div className="explane">
                         <h3>{title}</h3>
@@ -202,12 +203,12 @@ function Posts() {
                       <div className="link">
                         <div className="goto" >
 
-                          <div className="info" onClick={() => handleDetailClick({ id, img, title, tag, large, update, category, regular, metarial })}>
+                          <div className="info" onClick={() => handleDetailClick({ _id, img, title, tag, large, update, category, regular, metarial })}>
                             <img src="img/돋보기.png"
                               alt="상세보기"></img>상세보기
                           </div>
 
-                          <div className="cart" onClick={() => handleCartClick({ id, img, title, tag, large, update, category, regular, metarial })}>
+                          <div className="cart" onClick={() => handleCartClick({_id, img, title, tag, large, update, category, regular, metarial })}>
                             <img src="img/장바구니.png"
                                  alt="장바구니"></img>장바구니
                           </div>
