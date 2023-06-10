@@ -30,27 +30,8 @@ function UserMypage() {
     // };
 
     const handleOrderHistoryClick = () => {
-      let menuname = ''
-      axios
-        .get("http://localhost:5000/order/view", {
-          params: { id: localStorage.getItem("id") },
-        })
-        .then((response) => {
-          console.log(localStorage.getItem("id"));
-          
-          console.log(response.data);
-          const orders = response.data.orderData;
-  
-          orders.forEach((order) => {
-            data[idx] = order;
-            idx++;
-          });
-          
-          navigate("/OrderHistory", { state: data });
-        })
-        .catch((error) => {
-          console.error(error);
-        });
+      navigate("/OrderHistory");
+      
         }
         
     

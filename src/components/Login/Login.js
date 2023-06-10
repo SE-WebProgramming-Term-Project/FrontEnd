@@ -2,9 +2,10 @@ import "./css/Login.css";
 import Nav from "../Nav/Nav";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function Login() {
+  const navigate = useNavigate();
   const [id, setId] = useState();
   const [pw, setpw] = useState();
   const handleidChange = (e) => {
@@ -25,6 +26,7 @@ function Login() {
         if (pw === response.data.pw) {
           console.log("로그인 성공");
           localStorage.setItem("id", id);
+             navigate("/");
         } else {
           alert("로그인 실패!");
         }
@@ -45,6 +47,7 @@ function Login() {
   //       if (pw === response.data[0].pw) {
   //         console.log("로그인 성공");
   //         localStorage.setItem("id", id);
+  //         navigate("/");
   //       } else {
   //         alert("로그인 실패!");
   //       }

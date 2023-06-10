@@ -31,23 +31,7 @@ function Nav() {
     }
     
     const handleOrderHistoryClick = () => {
-      let data = []
-    let idx =0
-      axios
-        .get("http://localhost:5000/order/view", { id: "bb" })
-        .then((response) => {
-          const orders = response.data;
-    
-          orders.forEach((order) => {
-            data[idx] = order;
-            idx++;
-          });
-    
-          navigate("/OrderHistory", { state: data });
-        })
-        .catch((error) => {
-          console.error(error);
-        });
+      navigate("/OrderHistory");
       }
     const handleChangeInform = () =>{
         navigate("/ChangeInform")
