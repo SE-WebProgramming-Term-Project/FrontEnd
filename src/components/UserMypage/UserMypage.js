@@ -53,7 +53,7 @@ function UserMypage() {
         });
         }
         
-    };
+    
         
     
     const handleChangeInform = () =>{
@@ -93,7 +93,7 @@ function UserMypage() {
     </div>
     
   );
-
+  }
 
 
 export default UserMypage;
