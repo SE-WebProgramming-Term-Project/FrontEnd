@@ -70,6 +70,8 @@ function Posts() {
 
   setPosts(sortedPosts);
   setPage(1);
+  setTotalPosts(originalPosts.length)
+  console.log("실행")
 }, [kategorie, selectedCategory, originalPosts]);
 
   useEffect(() => {
@@ -88,6 +90,7 @@ function Posts() {
   const handleCategoryClick = (category) => {
     setSelectedCategory(category);
     setPosts(originalPosts);
+
 
     const tds = document.querySelectorAll(".kategorie_bar td");
     tds.forEach((td) => {
@@ -154,22 +157,27 @@ function Posts() {
               </tr>
               </tbody>
             </table>
-            <label>
-              <select
-                  type="number"
-                  value={kategorie}
-                  onChange={(event) => {
-                    if (selectedCategory === "전체") {
-                      setKategorie(Number(event.target.value));
-                    }
-                  }}
-                  disabled={selectedCategory !== "전체"}
-              >
-                <option value="1" selected >신제품순</option>
-                <option value="2">가격낮은순</option>
-                <option value="3">가격높은순</option>
-              </select>
-            </label>
+            <div className="lable_container">
+              <div className="spaceEmpty"></div>
+              <label>
+                <select
+                    type="number"
+                    value={kategorie}
+                    onChange={(event) => {
+                      if (selectedCategory === "전체") {
+                        setKategorie(Number(event.target.value));
+                      }
+                    }}
+                    disabled={selectedCategory !== "전체"}
+                >
+                  <option value="1">신제품순</option>
+                  <option value="2">가격낮은순</option>
+                  <option value="3">가격높은순</option>
+                </select>
+              </label>
+            </div>
+            <div className="pizza_container">
+
             {posts
                 .filter((post) =>
                     selectedCategory === "전체"
@@ -179,15 +187,19 @@ function Posts() {
                 .slice(offset, offset + limit)
                 .map(({ _id, img, title, tag, large, update, category, regular, metarial, count }) => (
                     <div className="pizzaMenu" key={_id}>
-                      <img src={img} width="320px" height="240px" alt="피자 이미지"></img>
+                      <img src={img} alt="피자 이미지"></img>
                       <div className="explane">
                         <h3>{title}</h3>
                         <h6>{tag}</h6>
                         <div className="price">
-                          <h5 className="large">L</h5>
-                          <h5 className="cost">{formatPrice(large)}</h5>
-                          <h5 className="large">R</h5>
-                          <h5 className="cost">{formatPrice(regular)}</h5>
+                          <div className="price_set">
+                            <h5 className="large">L</h5>
+                            <h5 className="cost">{formatPrice(large)}</h5>
+                          </div>
+                          <div className="price_set">
+                            <h5 className="large">R</h5>
+                            <h5 className="cost">{formatPrice(regular)}</h5>
+                          </div>
                         </div>
                         <div className="metarials">
                           {metarial.map((item, index) => (
@@ -211,6 +223,7 @@ function Posts() {
                       </div>
                     </div>
                 ))}
+            </div>
           </div>
         </main>
         <footer id="menu_footer">

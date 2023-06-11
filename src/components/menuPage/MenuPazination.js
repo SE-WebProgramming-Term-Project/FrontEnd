@@ -3,7 +3,8 @@ import './css/MenuPazination.css'
 
 function Pagination({ total, limit, page, setPage }) {
     const numPages = Math.ceil(total / limit);
-
+    console.log(total)
+    console.log(numPages)
     return (
         <nav className="menu-pagination-nav">
             <button

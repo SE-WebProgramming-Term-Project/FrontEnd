@@ -3,40 +3,25 @@
   box-sizing: border-box;
 }
 
-.Layout {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-  position: relative;
-}
-
-
 #menu_footer{
-  position: absolute;
-  top: 900px;
-}
-#menu_container{
+  margin-top: 90px;
 
-  position: absolute;
+}
+
+#menu_container {
   width: 1200px;
-  left: 0;
-
   margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-
 }
-
+.pizza_container{
+  display: flex;
+}
 .kategorie_bar{
   width: 1200px;
   height: 70px;
   color: #ccc;
   border: 1px solid #ccc;
   border-collapse: collapse;
-  margin-bottom: 150px;
+  margin-bottom: 50px;
   margin-top: 15px;
 }
 
@@ -57,12 +42,15 @@
   background-color: #41b6E6;
   color: #fff;
 }
+.lable_container{
+  display: flex;
+  margin-bottom: 60px;
+}
+.spaceEmpty{
+  width: 900px;
+}
 label{
   display: block;
-  position:absolute;
-  right: 0;
-  top: 100px;
-  margin: 0;
 
 }
 label select{
@@ -89,6 +77,7 @@ label select{
 }
 
 .pizzaMenu .explane{
+  padding-left: 10px;
   margin-top: 50px;
   min-width: 270px;
   font-size: 30px;
@@ -104,10 +93,17 @@ label select{
   font-size: 18px;
 
 }
+.pizzaMenu .explane .price_set{
+  display: flex;
+
+}
 .pizzaMenu .explane .price{
   display: flex;
   font-size: 30px;
   margin-top: -30px;
+
+
+  justify-content: space-between;
 }
 .price h5:nth-child(2) {
   margin-right: 20px; /* 원하는 만큼의 간격 설정 */
@@ -139,10 +135,10 @@ label select{
   text-align: center;
   line-height: 40px;
 }
-.pizzaMenu .img{
+.pizzaMenu img{
   max-width: 276px;
   display: inline-block;
-
+  margin-right: 30px;
 }
 .pizzaMenu:hover .link{
   display: flex;
