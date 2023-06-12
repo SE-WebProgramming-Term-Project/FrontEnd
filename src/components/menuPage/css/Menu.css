@@ -7,7 +7,7 @@
 }
 #menu_footer{
   margin-top: 90px;
-  background-color:#f4f4f4;
+  background-color: #f4f4f4;
 }
 
 #menu_container {
@@ -84,19 +84,15 @@ label select{
 
 .pizzaMenu .explane{
   padding-left: 20px;
-  margin-top: 30px;
+  margin-top: 50px;
   min-width: 270px;
   font-size: 30px;
-
+  margin-top: -30px;
+  padding: 20px;
 }
-.info_header{
-  height: 90px;
-}
-.pizzaMenu .explane .pizza_title{
-  margin-top: 10px;
+.pizzaMenu .explane h3{
   margin-bottom: -30px;
-  font-size: 20px;
-
+  font-size: 24px;
 }
 .pizzaMenu .explane h6{
   color: grey;
@@ -110,7 +106,7 @@ label select{
 .pizzaMenu .explane .price{
   display: flex;
   font-size: 30px;
-  margin-top: -30px;
+  margin-top: -50px;
 
 
   justify-content: space-between;
