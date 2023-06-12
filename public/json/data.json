@@ -1,0 +1,85 @@
+[
+  {
+    "id": 1,
+    "img" : "img/pizza1.png",
+    "title": "a",
+    "tag" : "#전주불백피자 #목동피자",
+    "large": "100",
+    "reguler" : "1",
+    "update": "2000-01-01",
+    "category" : "장인피자",
+    "metarial" : ["새우", "치즈", "닭고기"]
+  },  {
+  "id": 2,
+  "img" : "img/pizza2.png",
+  "title": "b",
+  "tag" : "#전주불백피자 #목동피자",
+  "large": "300",
+  "reguler" : "2",
+  "update": "2000-01-02",
+  "category" : "장인피자",
+  "metarial" : ["새우", "치즈", "닭고기"]
+
+},  {
+  "id": 3,
+  "img" : "img/pizza3.png",
+  "title": "c",
+  "tag" : "#전주불백피자 #목동피자",
+  "large": "200",
+  "reguler" : "3",
+  "update": "2000-01-03",
+  "category" : "달인피자",
+  "metarial" : ["새우", "치즈", "닭고기"]
+},  {
+  "id": 4,
+  "img" : "img/pizza4.png",
+  "title": "d",
+  "tag" : "#전주불백피자 #목동피자",
+  "large": "500",
+  "reguler" : "4",
+  "update": "2000-01-04",
+  "category" : "달인피자",
+  "metarial" : ["새우", "치즈", "닭고기"]
+},  {
+  "id": 5,
+  "img" : "img/pizza5.png",
+  "title": "e",
+  "tag" : "#전주불백피자 #목동피자",
+  "large": "400",
+  "reguler" : "5",
+  "update": "2000-01-05",
+  "category" : "달인피자",
+  "metarial" : ["새우", "치즈", "닭고기"]
+},  {
+  "id": 6,
+  "img" : "img/pizza6.png",
+  "title": "f",
+  "tag" : "#전주불백피자 #목동피자",
+  "large": "700",
+  "reguler" : "6",
+  "update": "2000-01-06",
+  "category" : "명품피자",
+  "metarial" : ["새우", "치즈", "닭고기"]
+},  {
+  "id": 7,
+  "img" : "img/pizza7.png",
+  "title": "g",
+  "tag" : "#전주불백피자 #목동피자",
+  "large": "600",
+  "reguler" : "7",
+  "update": "2000-01-07",
+  "category" : "명품피자",
+  "metarial" : ["새우", "치즈", "닭고기"]
+
+},  {
+  "id": 8,
+  "img" : "img/pizza8.png",
+  "title": "h",
+  "tag" : "#전주불백피자 #목동피자",
+  "large": "800",
+  "reguler" : "8",
+  "update": "2000-01-08",
+  "category" : "명품피자",
+  "metarial" : ["새우", "치즈", "닭고기"]
+}
+]

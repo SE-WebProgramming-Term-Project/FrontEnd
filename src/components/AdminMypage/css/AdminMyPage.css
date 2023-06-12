@@ -1,0 +1,38 @@
+a {
+    text-decoration: none;
+    color: black;
+}
+
+li {
+    list-style-type: none;
+}
+
+.top-text {
+    width: 1200px;
+    font-size: 22px;
+    font-weight: bold;
+    border-bottom: 1px solid #999;
+    color: #222;
+    margin: auto;
+    padding-top: 60px;
+    padding-bottom: 27px;
+}
+
+.btn {
+    position: absolute;
+    right: 10px;
+    display: inline-block;
+    font-size: 16px;
+    width: 128px;
+    height: 38px;
+    line-height: 38px;
+    text-align: center;
+    cursor: pointer;
+    color: #fff;
+    background-color: #ccc;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}

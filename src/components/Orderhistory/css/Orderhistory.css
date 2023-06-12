@@ -1,0 +1,86 @@
+/* .Ordercontainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .Orderinforcontainer {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .inform {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+  }
+  
+  .title {
+    font-weight: bold;
+  }
+  
+  .inner {
+    color: #333;
+  }
+  
+  span {
+    color: #999;
+  }
+  #sjreviewbtn{
+    
+  }
+   */
+
+   .Ordercontainer {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+  }
+
+  .order2container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 30px;
+    padding-bottom: 80px;
+  }
+  
+  .Orderinforcontainer {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .inform {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+  }
+  
+  .title {
+    font-weight: bold;
+  }
+  
+  .inner {
+    color: #333;
+  }
+  
+  span {
+    color: #999;
+  }
+  #sjreviewbtn {
+    padding: 10px 20px;
+    background-color: #f44336;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+  }
+  
+  #sjreviewbtn:hover {
+    background-color: #d32f2f;
+  }
+  

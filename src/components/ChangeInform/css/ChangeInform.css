@@ -1,0 +1,143 @@
+
+.changeHedder{
+    width: 1200px;
+    font-weight: 400;
+    height: 22px;
+    padding: 60px 0 27px 0;
+    font-size: 22px;
+    border-bottom: 1px solid #999;
+    color: #222;
+    margin: auto;
+    font-family: Noto Sans CJK KR Bold;
+    margin-bottom: 30px;
+}
+.myInform{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-bottom: 68px;
+}
+.inputbox{
+    width: 660px;
+    height: 50px;
+    margin-bottom: 20px;
+}
+
+input{
+border: none;
+border-bottom: 1px solid gray;
+}
+
+.nameinput{
+    width: 100%;
+    height: 50px;
+}
+.idinput{
+    width: 100%;
+    height: 50px;
+}
+.pwinput{
+    width: 100%;
+    height: 50px;
+}
+.repwinput{
+    width: 100%;
+    height: 50px;
+}
+.leftnum{
+    width: 178px;
+    height: 50px;
+    padding: 0 10px;
+}
+.rightnum{
+    width: 280px;
+    height: 50px;
+    margin-left: 30px;
+    padding: 15px 80px 15px 10px;
+}
+.phonbtn{
+    display: inline-block;
+    width: 128px;
+    height: 50px;
+    margin-left: 10px;
+    line-height: 50px;
+    float: right;
+    text-align: center;
+    cursor: pointer;
+    background-color: #ccc;
+    color: #fff;
+}
+.informbox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.birthinput{
+    width: 100%;
+    height: 50px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.emailInput{
+    display: flex;
+    justify-content: space-between;
+    width: 660px;
+    line-height: 50px;
+    margin-bottom: 20px;
+}
+.leftemail{
+    width: 290px;
+    height: 50px;
+    
+}
+.rightemail{
+    width: 332px;
+    height: 50px;
+    
+}
+.address{
+    width: 540px;
+    height: 50px;
+}
+
+.streetaddress{
+    width: 100%;
+    height: 50px;
+}
+.subBtn{
+    width: 660px;
+    display: flex;
+    justify-content: space-between;
+}
+.cancelbtn{
+    width: 325px;
+    height: 64px;
+    margin-right: 4px;
+    color: #fff;
+    background-color: #ccc;
+    line-height: 64px;
+    text-align: center;
+    display: inline-block;
+    font-size: 22px;
+}
+.searchaddress{
+    display: inline-block;
+    width: 110px;
+    background-color: #ccc;
+    color: #fff;
+    height: 50px;
+    margin-left: 10px;
+    text-align: center;
+    line-height: 50px;
+}
+.okbtn{
+    width: 325px;
+    height: 64px;
+    color: #fff;
+    background-color: #41b6e6;
+    line-height: 64px;
+    text-align: center;
+    display: inline-block;
+    cursor: pointer;
+}

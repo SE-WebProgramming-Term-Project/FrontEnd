@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+<<<<<<< HEAD
+    <list default="true" id="22d806c4-9494-4ae0-b348-849c51983370" name="Changes" comment="점주&#10;css, js는 완성, 그래프, 라우터 필요" />
+=======
+    <list default="true" id="dc75acd4-d2b3-4193-88b4-0a35566a6a16" name="Changes" comment="상세 페이지에 리뷰 구현 중">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/json/review.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/json/review.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/menuPage/Detail.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/menuPage/Detail.js" afterDir="false" />
+    </list>
+>>>>>>> origin/tmp
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+<<<<<<< HEAD
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="tsconfig.json" />
+      </list>
+    </option>
+  </component>
+=======
+>>>>>>> origin/tmp
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+<<<<<<< HEAD
+  <component name="ProjectId" id="2QogeJwWcXYUZykMeMvcgUu3ahE" />
+=======
+  <component name="ProjectId" id="2QhMTARNZdmxjjr6FG4Q3GHC62p" />
+>>>>>>> origin/tmp
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+<<<<<<< HEAD
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+=======
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;testkim&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/rlaqj/Documents/GitHub/APIinsert&quot;,
+>>>>>>> origin/tmp
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+<<<<<<< HEAD
+      <changelist id="22d806c4-9494-4ae0-b348-849c51983370" name="Changes" comment="" />
+      <created>1686025441479</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1686025441479</updated>
+      <workItem from="1686025444375" duration="4524000" />
+      <workItem from="1686038274640" duration="1253000" />
+      <workItem from="1686039892467" duration="1243000" />
+      <workItem from="1686054391215" duration="1215000" />
+      <workItem from="1686140846795" duration="825000" />
+      <workItem from="1686230754632" duration="14750000" />
+      <workItem from="1686284477198" duration="338000" />
+    </task>
+    <task id="LOCAL-00001" summary="점주&#10;css, js는 완성, 그래프, 라우터 필요">
+      <created>1686284628862</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1686284628862</updated>
+=======
+      <changelist id="dc75acd4-d2b3-4193-88b4-0a35566a6a16" name="Changes" comment="" />
+      <created>1685801364171</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1685801364171</updated>
+      <workItem from="1685801366259" duration="73000" />
+      <workItem from="1685856742977" duration="63000" />
+      <workItem from="1686107164853" duration="1468000" />
+      <workItem from="1686111334316" duration="1562000" />
+    </task>
+    <task id="LOCAL-00001" summary="상세 페이지에 리뷰 구현 중">
+      <created>1686108640287</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1686108640287</updated>
+>>>>>>> origin/tmp
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+<<<<<<< HEAD
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/tmp" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="점주&#10;css, js는 완성, 그래프, 라우터 필요" />
+    <option name="LAST_COMMIT_MESSAGE" value="점주&#10;css, js는 완성, 그래프, 라우터 필요" />
+=======
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="상세 페이지에 리뷰 구현 중" />
+    <option name="LAST_COMMIT_MESSAGE" value="상세 페이지에 리뷰 구현 중" />
+>>>>>>> origin/tmp
+  </component>
+</project>

@@ -1,0 +1,33 @@
+.menutab-page-whole-div {
+    height: 60px;
+    background-color: #fff;
+    width: 100%;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.menutab-page-whole-div .menutab-page-menutab {
+    text-align: center;
+    overflow: auto;
+    white-space: nowrap;
+    width: 100%;
+    display: inline-block;
+}
+
+.menutab-page-whole-div .menutab-page-menutab .menutab-page-title {
+    width: 50%;
+    display: inline-block;
+}
+
+.menutab-page-whole-div .menutab-page-menutab .menutab-page-title h5 {
+    cursor: pointer;
+    line-height: 60px;
+    white-space: nowrap;
+    font-size: 18px;
+    color: #999;
+}
+
+.menutab-page-whole-div .menutab-page-menutab .menutab-page-title .selected {
+    height: 60px;
+    border-bottom: 2px solid #222;
+    color: #222;
+}
