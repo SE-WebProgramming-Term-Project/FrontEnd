@@ -85,12 +85,17 @@ function Posts() {
     });
 
     setPage(1);
+    setKategorie(1);
   }, [selectedCategory]);
 
   const handleCategoryClick = (category) => {
     setSelectedCategory(category);
     setPosts(originalPosts);
 
+
+    if(category === "전체"){
+      window.location.reload();
+    }
 
     const tds = document.querySelectorAll(".kategorie_bar td");
     tds.forEach((td) => {
