@@ -1,3 +1,6 @@
+.detail_container{
+    background-color: #f4f4f4;
+}
 #detail_header{
     margin: 0 auto;
 }
@@ -6,12 +9,10 @@
     height: 660px;
     padding:40px;
     display: flex;
-
     border-right: 1px solid #ccc;
     border-left: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
-
-
+    background-color: white;
 }
 #detail_main .detail_img{
     max-width: 570px;
@@ -36,6 +37,7 @@
 
 .detail_kategorie_bar tr {
     text-align: center;
+    background-color: white;
 
     line-height: 68px;
 

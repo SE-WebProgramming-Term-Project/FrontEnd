@@ -38,7 +38,7 @@ function Detail() {
   console.log(detail);
 
   return (
-    <div>
+    <div className="detail_container">
       <header id="detail_header">
         <Nav />
         <Menu_header/>
@@ -84,7 +84,11 @@ function Detail() {
                   </tr>
                 ))
             ) : (
-              <tr>리뷰가 존재하지 않습니다!</tr>
+              <tr>
+                <td></td>
+                <td>리뷰가 존재하지 않습니다!</td>
+                <td></td>
+              </tr>
             )}
           </tbody>
         </table>
