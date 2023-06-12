@@ -12,6 +12,7 @@ function Orderhistory() {
   const [menuname, setMenuname] = useState([]);
   const [selectedOrder, setSelectedOrder] = useState(null);
   const [isReviewed, setIsReviewed] = useState(false); // 추가된 상태
+  const [isReviewClicked, setIsReviewClicked] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,6 +22,8 @@ function Orderhistory() {
         });
         const orders = response.data.orderData;
         setData(orders);
+
+        setIsReviewClicked(new Array(orders.length).fill(false));
       } catch (error) {
         console.error(error);
       }
@@ -30,7 +33,7 @@ function Orderhistory() {
   }, []);
 
   useEffect(() => {
-    if(data != undefined){
+    if (data != undefined) {
       const fetchMenuNames = async () => {
         const names = await Promise.all(
           data.map((i) =>
@@ -49,18 +52,22 @@ function Orderhistory() {
             )
           )
         );
-  
+
         const menuTitles = names.map((menuArr) => menuArr.join(" "));
         setMenuname(menuTitles);
       };
-  
+
       fetchMenuNames();
     }
-    
   }, [data]);
 
-  const handleReviewClick = (order) => {
+  const handleReviewClick = (order, index) => {
     setSelectedOrder(order);
+    setIsReviewClicked((prevState) => {
+      const updatedState = [...prevState];
+      updatedState[index] = true;
+      return updatedState;
+    });
   };
 
   const handleReviewClose = () => {
@@ -68,10 +75,13 @@ function Orderhistory() {
     setIsReviewed(true); // 리뷰가 작성되면 상태를 업데이트
   };
 
+  console.log(isReviewClicked);
+
   return (
     <div className="Ordercontainer">
-      <UserMypage /> {/* UserMypage 컴포넌트에 상태 전달 */}
       
+      <UserMypage /> {/* UserMypage 컴포넌트에 상태 전달 */}
+      <div className="order2container">
       {data != undefined && data.length > 0 ? (
         data.map((i, index) => (
           <div className="Orderinforcontainer" key={i.id}>
@@ -96,16 +106,24 @@ function Orderhistory() {
               <div className="inner">{i.store}</div>
             </div>
             {!i.isReviewed && (
-              <div id="sjreviewbtn" onClick={ () => handleReviewClick(i)}>리뷰 입력</div>
+              <div>
+                <div
+                  id="sjreviewbtn"
+                  onClick={() => handleReviewClick(i, index)}
+                >
+                  리뷰 입력
+                </div>
+                {(selectedOrder && isReviewClicked[index] )&& (
+                  <Review order={selectedOrder} onClose={handleReviewClose} />
+                )}
+              </div>
             )}
           </div>
         ))
       ) : (
         <span>주문내역이 없습니다.</span>
       )}
-      {selectedOrder && (
-        <Review order={selectedOrder} onClose={handleReviewClose} />
-      )}
+      </div>
     </div>
   );
 }
