@@ -41,18 +41,24 @@ function Detail() {
     <div>
       <header id="detail_header">
         <Nav />
-        <Menu_header />
+        <Menu_header/>
       </header>
       <main id="detail_main">
         <img className="detail_img" src={pizzaInfo.img} alt={pizzaInfo.title} />
-        <div className="explane">
+        <div className="explaneDetail">
           <h3>{pizzaInfo.title}</h3>
           <h6>{pizzaInfo.tag}</h6>
           <div className="price">
-            <h5 className="large">L</h5>
-            <h5 className="cost">{formatPrice(pizzaInfo.large)}</h5>
-            <h5 className="large">R</h5>
-            <h5 className="cost">{formatPrice(pizzaInfo.regular)}</h5>
+            <div className="price_set">
+              <h5 className="large">L</h5>
+              <h5 className="cost">{formatPrice(pizzaInfo.large)}</h5>
+            </div>
+            <div className="price_set">
+              <h5 className="large">R</h5>
+              <h5 className="cost">{formatPrice(pizzaInfo.regular)}</h5>
+            </div>
+
+
           </div>
         </div>
       </main>

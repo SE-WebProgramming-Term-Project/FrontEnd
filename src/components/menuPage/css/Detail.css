@@ -6,6 +6,12 @@
     height: 660px;
     padding:40px;
     display: flex;
+
+    border-right: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+
+
 }
 #detail_main .detail_img{
     max-width: 570px;
@@ -52,31 +58,43 @@
     border: 1px solid  #ccc;
     cursor: pointer;
 }
-.explane{
+.explaneDetail{
 margin: 0 auto;
+padding-left: 50px;
 }
 
- .explane h3{
+ .explaneDetail h3{
      margin-bottom: -30px;
+     text-align: center;
      font-size: 28px;
+     justify-content: center;
  }
- .explane h6{
+ .explaneDetail h6{
     color: grey;
     font-size: 18px;
-
+     text-align: center;
+     justify-content: center;
 }
- .explane .price{
+ .explaneDetail .price{
+     width: 300px;
     display: flex;
     font-size: 30px;
-    margin-top: -30px;
+     align-items: center;
      justify-content: space-between;
+    margin-top: -30px;
+
+
 }
-.explane .price .large{
+.explaneDetail .price .large{
     color :#41b6E6;
 
     font-weight: bold;
 }
-.explane .price .cost{
+.explaneDetail .price .cost{
     font-weight: bold;
     margin-left: 10px;
+}
+.explaneDetail .price .price_set{
+    display: flex;
+   align-items: center;
 }
