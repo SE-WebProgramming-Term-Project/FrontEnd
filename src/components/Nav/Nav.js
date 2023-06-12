@@ -123,6 +123,13 @@ function Nav() {
                 <div class="tabItem">선물하기</div>
                 </div>
               </div>
+              <div id='sjsubcon'>
+                  <div className='sjsubcontext'>회사소개></div>
+                  <div className='sjsubcontext'>가맹문의></div>
+                  <div className='sjsubcontext'>고객센터></div>
+                  <div className='sjsubcontext'>단체주문></div>
+                  <div id='sjxbtn' onClick ={()=>toggleMenu()}><img src='./img/xbtn.png'></img></div>
+              </div>
             </div>
             </div>
             
