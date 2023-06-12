@@ -65,7 +65,7 @@ main ul{
 }
 .pizzaBox .pizzaInfo{
 
-width: 550px;
+    width: 550px;
     margin-right: -70px;
     margin-left: 40px;
 }
@@ -74,6 +74,12 @@ width: 550px;
 }
 .baskit .pizzaBox .pizza_cart_info{
     display: flex;
+    align-items: center;
+    clear: both;
+}
+.pizza_cart_info .count_state{
+    display: flex;
+    justify-content: flex-start;
     align-items: center;
 }
 .count_number{
@@ -87,12 +93,12 @@ width: 550px;
 
     width: 40px;
     height: 40px;
-    margin: 0 -50px 0 -50px;
+    margin-left: -50px;
 }
 .price_large{
-    float: left;
-    margin-left: 150px;
-    margin-right: 100px;
+
+    overflow: hidden;
+
     white-space: nowrap;
     color: #222222;
     font-size: 18px;
@@ -188,4 +194,11 @@ width: 550px;
     height: 25px;
     margin-top: -20px;
     font-size: 16px;
+}
+.cart_info_end{
+    width: 230px;
+    justify-content: space-between;
+    display: flex;
+    margin-left: 50px;
+    align-items: center;
 }
