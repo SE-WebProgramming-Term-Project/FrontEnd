@@ -7,7 +7,7 @@
 }
 #menu_footer{
   margin-top: 90px;
-
+  background-color:#f4f4f4;
 }
 
 #menu_container {
@@ -84,14 +84,18 @@ label select{
 
 .pizzaMenu .explane{
   padding-left: 20px;
-  margin-top: 50px;
+  margin-top: 30px;
   min-width: 270px;
   font-size: 30px;
-  margin-top: -30px;
 
 }
-.pizzaMenu .explane h3{
+.info_header{
+  height: 90px;
+}
+.pizzaMenu .explane .pizza_title{
+  margin-top: 10px;
   margin-bottom: -30px;
+  font-size: 20px;
 
 }
 .pizzaMenu .explane h6{

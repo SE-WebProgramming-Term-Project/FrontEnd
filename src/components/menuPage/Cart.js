@@ -168,7 +168,7 @@ function Cart() {
                     alt="피자 이미지"
                   />
                   <div className="pizzaInfo">
-                    <h3 className="pizza_title">{pizza.title}</h3>
+                    <h3 className="cart_pizza_title">{pizza.title}</h3>
                     <span className="pizza_option"> L</span>
                   </div>
                   <div className="pizza_cart_info">
