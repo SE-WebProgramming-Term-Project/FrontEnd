@@ -26,6 +26,8 @@ function Posts() {
     navigate("/detail", { state: { pizzaInfo } });
   };
 
+
+
   useEffect(() => {
     const storedCart = localStorage.getItem('cart');
     if (storedCart) {
@@ -85,7 +87,7 @@ function Posts() {
     });
 
     setPage(1);
-    setKategorie(1);
+setKategorie(1);
   }, [selectedCategory]);
 
   const handleCategoryClick = (category) => {
@@ -93,11 +95,9 @@ function Posts() {
     setPosts(originalPosts);
 
 
-    if(category === "전체"){
+if(category === "전체"){
       window.location.reload();
-    }
-
-    const tds = document.querySelectorAll(".kategorie_bar td");
+    }    const tds = document.querySelectorAll(".kategorie_bar td");
     tds.forEach((td) => {
       if (td.textContent === category) {
         td.classList.add("selected");
@@ -194,8 +194,11 @@ function Posts() {
                     <div className="pizzaMenu" key={_id}>
                       <img src={img} alt="피자 이미지"></img>
                       <div className="explane">
-                        <h3>{title}</h3>
-                        <h6>{tag}</h6>
+                        <div className="info_header">
+                          <h5 className="pizza_title">{title}</h5>
+                          <h6>{tag}</h6>
+                        </div>
+
                         <div className="price">
                           <div className="price_set">
                             <h5 className="large">L</h5>
