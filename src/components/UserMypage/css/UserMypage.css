@@ -8,17 +8,9 @@
 .tab{
     display: flex;
     justify-content: center;
-    padding-bottom: 30px;
+    
 }
-
 #tabTitle{
     width: 200px;
     height: 58px;
-    text-align: center;
-    line-height: 58px;
-    border-bottom: 1px solid #999;
-}
-
-body {
-background-color: white;
 }
